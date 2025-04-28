@@ -1,0 +1,38 @@
+/* style.css */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: rgb(62, 197, 243); /* Putih polos */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+.logo img {
+  width: 40px;
+  height: auto; /* Ukuran logo */
+}
+
+nav {
+  /* Bisa tambahin styling nav kalau mau */
+}
+
+.nav-list {
+  list-style: none; /* Hilangin bullet */
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: #333; /* Warna teks */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+  color: #007bff; /* Biru pas hover */
+}

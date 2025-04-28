@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>halaman <?= $data['judul']; ?></title>
-    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
 
 </head>
 
-<body>
-    <!-- As a link -->
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-        </div>
+<header>
+    <div class="logo">
+        <img src="<?= BASEURL; ?> /img/logo.svg" alt="Logo Posyandu" ;>
+    </div>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#blog">Artikel</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a target="_self" href="/user/dashboard.php">Login</a></li>
+        </ul>
     </nav>
-
-    <!-- As a heading -->
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Navbar</span>
-        </div>
-    </nav>
+</header>

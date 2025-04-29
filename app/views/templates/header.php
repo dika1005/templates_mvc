@@ -20,6 +20,7 @@
             <li><a href="#blog">Artikel</a></li>
             <li><a href="#">Contact</a></li>
             <li><a target="_self" href="/user/dashboard.php">Login</a></li>
+            <li><a href="<?= BASEURL; ?>/data ">Data</a></li>
         </ul>
     </nav>
 </header>

@@ -2,24 +2,22 @@
 
 class Data_model
 {
-    private $dbh;
-    private $stmt;
+    private $table = 'data';
+    private $db;
 
     public function __construct()
     {
-        $dsn = 'mysql:host=localhost;dbname=phpmvc';
-        
-        try {
-            $this->dbh = new PDO($dsn, 'root', '');
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
+        $this->db = new Database;
     }
+
+
+
+    private $dbh;
+    private $stmt;
 
     public function getAllData()
     {
-        $this->stmt = $this->dbh->prepare('SELECT * FROM data');
-        $this->stmt->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+       $this ->db->query('SELECT * FROM ' . $this->table);
+       return $this->db->resultSet();
     }
 }

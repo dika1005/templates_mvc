@@ -1,3 +1,6 @@
-    <h1>selamat datang</h1>
-
-    <p>halo nama saya <?= $data['nama'] ?> </p>
+<p class="ps">Selamat Datang di</p>
+  <h1>POSYANDU MAWAR MANIS</h1>
+  <p>Digitalisasi pelayanan Posyandu secara Paperless,
+    Online & Tertintegrasi dengan Puskesmas,
+    Dinas Kesehatan Kota/Kabupaten.</p>
+  <img src="public/img/hero2.png" alt="hero">

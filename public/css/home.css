@@ -1,0 +1,73 @@
+/* Home SECTION */
+.hero {
+    background-color: #6fbcff;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 18% 0;
+    background: linear-gradient(
+        rgba(82, 200, 255, 0.77),
+        rgba(62, 184, 237, 0.55)
+      ),
+      url("../img/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+  }
+  
+  .hero .ps {
+    font-size: 2em;
+    color: white;
+    margin-top: -5%;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    margin-left: 10%;
+  }
+  
+  .hero img {
+    max-width: 30%; /* atur sesuai kebutuhan */
+    height: auto;
+    margin-left: 60%;
+    margin-top: -20%;
+  }
+  
+  .hero h1 {
+    font-size: 3em;
+    text-align: left;
+    color: white;
+    font-weight: bold;
+    margin-left: 10%;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+  }
+  
+  .hero h3 {
+    font-size: 2em;
+    margin-left: 10%;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+  }
+  
+  .hero p {
+    font-size: 1.1em;
+    margin-left: 10%;
+    max-width: 400px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+  }
+  
+  .hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.9s ease-out;
+  }
+  
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }

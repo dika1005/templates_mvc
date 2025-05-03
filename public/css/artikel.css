@@ -1,9 +1,13 @@
 /* artikel.css */
+
 .container {
-  max-width: 1200px;
+
   margin: 0 auto;
   padding: 2rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e0f7ff; /* biru muda khusus area artikel */
+  padding: 2rem;
+  border-radius: 12px;
 }
 
 .header {

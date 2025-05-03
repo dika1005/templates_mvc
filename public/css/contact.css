@@ -1,0 +1,119 @@
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    color: #1f3c88;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+  
+  .contact-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  
+  .contact-form {
+    flex: 1;
+    background-color: #f0f8ff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(100, 149, 237, 0.2); /* cornflower blue */
+  }
+  
+  .contact-form h2 {
+    color: #1f3c88;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form label {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #d0e7ff;
+    border-radius: 12px;
+    margin-top: 5px;
+    font-size: 1em;
+    resize: vertical;
+    background-color: #ffffff;
+    color: #1f3c88;
+  }
+  
+  .contact-form button {
+    margin-top: 20px;
+    background-color: #1f3c88;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+  }
+  
+  .contact-form button:hover {
+    background-color: #163173;
+  }
+  
+  .contact-info {
+    flex: 1;
+    padding: 30px;
+  }
+  
+  .contact-info h3 {
+    color: #1f3c88;
+    margin-bottom: 15px;
+  }
+  
+  .contact-info p {
+    margin: 10px 0;
+  }
+  
+  .social-icons {
+    margin-top: 20px;
+  }
+  
+  .social-icons a {
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 24px;
+    color: #1f3c88;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #0d2b70;
+  }
+  
+  iframe {
+    margin-top: 30px;
+    width: 100%;
+    height: 300px;
+    border: none;
+    border-radius: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-section {
+      flex-direction: column;
+    }
+  }

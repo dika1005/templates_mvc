@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/about.css">
 <div class="about-content">
     <div class="about-text hidden">
       <p class="head">Tentang <span class="psn">Posyandu</span></p>

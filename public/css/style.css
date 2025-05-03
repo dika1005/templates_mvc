@@ -1,38 +1,74 @@
 /* style.css */
 
+/* Biar scroll smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+/* HEADER */
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 40px;
-  background-color: rgb(62, 197, 243); /* Putih polos */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+  font-size: 15px;
+  z-index: 1000;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 
+body.scrolled header {
+  background-color: rgba(96, 181, 255, 0.8);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* LOGO */
 .logo img {
   width: 40px;
-  height: auto; /* Ukuran logo */
+  height: auto;
 }
 
-nav {
-  /* Bisa tambahin styling nav kalau mau */
-}
-
-.nav-list {
-  list-style: none; /* Hilangin bullet */
+/* Optional: tambahan nama brand/logo text */
+.nav-logo {
   display: flex;
-  gap: 20px;
+  list-style: none;
+  align-items: center;
+  margin-left: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5em;
+  position: relative;
+  left: -450px; /* Atur jarak sesuai kebutuhan */
+}
+
+/* NAVIGATION */
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 70px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
   margin: 0;
   padding: 0;
 }
 
-.nav-list li a {
+nav ul li {
+  margin: 0;
+}
+
+nav a {
   text-decoration: none;
-  color: #333; /* Warna teks */
-  font-weight: 500;
+  color: white;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.nav-list li a:hover {
-  color: #007bff; /* Biru pas hover */
+nav a:hover {
+  color: #004080;
 }

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/artikel.css">
 <div class="container">
     <div class="header">
       <h4 class="subtitle">Artikel</h4>

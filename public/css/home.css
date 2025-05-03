@@ -89,7 +89,7 @@ body.scrolled header {
   padding: 18% 0;
   background: linear-gradient(
       rgba(82, 200, 255, 0.77),
-      rgba(62, 184, 237, 0.55)
+      rgba(44, 163, 213, 0.55)
     ),
     url("../img/hero.jpg");
   background-size: cover;

@@ -1,14 +1,15 @@
 <link rel="stylesheet" href="<?= BASEURL; ?>/css/home.css">
 <script src="<?= BASEURL; ?>/js/scroll.js"></script>
 
+<script src="/public/js/scroll.js"></script>
 
 <section id="hero" class="hero">
   <p class="ps">Selamat Datang di</p>
   <h1>POSYANDU MAWAR MANIS</h1>
   <p>Digitalisasi pelayanan Posyandu secara Paperless,
-    Online & Tertintegrasi dengan Puskesmas,
+    Online & Terintegrasi dengan Puskesmas,
     Dinas Kesehatan Kota/Kabupaten.</p>
-  <img src="<?= BASEURL; ?>/img/hero2.png" alt="Gambar Posyandu">
+  <img src="/public/img/hero2.png" alt="Gambar Posyandu">
 </section>
 
 <section id="about" class="about">
@@ -25,12 +26,10 @@
       </p>
     </div>
     <div class="about-img hidden">
-      <img src="<?= BASEURL; ?>/img/about.png" alt="Gambar Posyandu">
+      <img src="/public/img/about.png" alt="Gambar Posyandu">
     </div>
   </div>
-</section> <!-- ← ini dia yang ilang! -->
-
-
+</section>
 
 <section id="blog" class="blog-section">
   <div class="container">
@@ -45,7 +44,7 @@
     <div class="card-wrapper">
       <!-- Card 1 -->
       <div class="card">
-        <img src="public/img/posyanduA.jpg" alt="posyanduA" />
+        <img src="/public/img/posyanduA.jpg" alt="posyanduA" />
         <div class="card-content">
           <h3><a href="#">Posyandu</a></h3>
           <p>
@@ -57,20 +56,20 @@
 
       <!-- Card 2 -->
       <div class="card">
-        <img src="public/img/ibu_hamil.webp" alt="ibu hamil" />
+        <img src="/public/img/ibu_hamil.webp" alt="ibu hamil" />
         <div class="card-content">
           <h3><a href="#">Panduan Ibu Hamil</a></h3>
           <p>
             Ketika berencana untuk hamil, para wanita dianjurkan untuk lebih memperhatikan kesehatannya mulai dari sebelum hamil, selama hamil,
             setelah melahirkan hingga menyusui. Beberapa cara berikut perlu dilakukan untuk membantu menjaga kesehatan ibu hamil, antara lain:
           </p>
-          <a href="https://www.halodoc.com/kesehatan/kesehatan-ibu-hamil?srsltid=AfmBOoqNr4-4JMK2CQYZPhBTodCAk71dXswS9ICeO8vOm94_ymTp3U71" class="btn">Selengkapnya</a>
+          <a href="https://www.halodoc.com/kesehatan/kesehatan-ibu-hamil" class="btn">Selengkapnya</a>
         </div>
       </div>
 
       <!-- Card 3 -->
       <div class="card">
-        <img src="public/img/balita.jpg" alt="balita" />
+        <img src="/public/img/balita.jpg" alt="balita" />
         <div class="card-content">
           <h3><a href="#">Gizi Balita</a></h3>
           <p>
@@ -83,3 +82,58 @@
     </div>
   </div>
 </section>
+<section>
+<div class="container">
+  <div class="contact-section">
+    <div class="contact-form">
+      <h2>Form Kontak</h2>
+      <form>
+        <label for="name">Nama Lengkap</label>
+        <input type="text" id="name" name="name" placeholder="Masukkan nama kamu...">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="contoh@email.com">
+
+        <label for="subject">Subjek</label>
+        <input type="text" id="subject" name="subject" placeholder="Judul pesan kamu...">
+
+        <label for="message">Pesan</label>
+        <textarea id="message" name="message" rows="6" placeholder="Tulis pesan kamu di sini..."></textarea>
+
+        <button type="submit">Kirim Pesan 🚀</button>
+      </form>
+    </div>
+
+    <div class="contact-info">
+      <h3>Informasi</h3>
+      <p>📍 Alamat: Jl. Blok Pahing Rt:08 Rw:02</p>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3130.005741901981!2d108.56766707379184!3d-6.9851206684022324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwNTknMDYuNSJTIDEwOMKwMzQnMTIuOSJF!5e1!3m2!1sid!2sid!4v1746264868348!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    </div>
+  </div>
+
+</div>
+</section>
+<script>
+  const hiddenElements = document.querySelectorAll('.hidden');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        entry.target.classList.remove('hidden');
+      }
+    });
+  });
+
+  hiddenElements.forEach((el) => observer.observe(el));
+  window.addEventListener("scroll", function () {
+      const body = document.body;
+      if (window.scrollY > 50) {
+        body.classList.add("scrolled");
+      } else {
+        body.classList.remove("scrolled");
+      }
+    });
+</script>

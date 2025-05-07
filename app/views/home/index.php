@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="<?= BASEURL; ?>/css/home.css">
-<script src="<?= BASEURL; ?>/js/scroll.js"></script>
+<link rel="stylesheet" href="../../../public/css/home.css">
+<script src="/js/scroll.js"></script>
 
 <script src="/public/js/scroll.js"></script>
 

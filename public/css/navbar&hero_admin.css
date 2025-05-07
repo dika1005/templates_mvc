@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+  }
+  
+  
+  .admin-navbar {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .nav-logo img {
+    height: 40px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-links li a:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      background: rgba(0, 153, 204, 0.9);
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      border-radius: 10px;
+      display: none;
+      padding: 10px;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  
+    .nav-toggle {
+      display: block;
+      cursor: pointer;
+    }
+  }
+  
+  /* Hamburger icon (optional) */
+  .nav-toggle {
+    display: none;
+    font-size: 24px;
+    color: #333;
+  }
+  /* Kontainer Utama */
+.content-section {
+    padding: 60px 20px;
+    color: #333232;
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Membungkus isi */
+  .content-section .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  /* Judul */
+  .content-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Paragraf */
+  .content-section p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #333232;
+  }
+  
+  /* Statistik Box */
+  .dashboard-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  /* Box individual */
+  .stat-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Icon di atas */
+  .stat-box i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #00d4ff;
+  }
+  
+  /* Judul dan teks */
+  .stat-box h3 {
+    margin: 10px 0 5px;
+    font-size: 1.4rem;
+    color: #333232;
+  }
+  
+  .stat-box p {
+    font-size: 1rem;
+    color: #333232;
+  }
+  

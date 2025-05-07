@@ -1,0 +1,114 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, rgba(82, 200, 255, 0.8), rgba(164, 53, 238, 0.6));
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.95);
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: rgb(164, 53, 238);
+    box-shadow: 0 0 8px rgba(164, 53, 238, 0.3);
+    outline: none;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, rgb(164, 53, 238), rgb(123, 31, 162));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(164, 53, 238, 0.4);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    margin-top: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: linear-gradient(45deg, rgb(164, 53, 238), rgb(123, 31, 162));
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+.loader {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.loader div {
+    width: 10px;
+    height: 10px;
+    background: rgb(164, 53, 238);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    animation: bounce 0.5s ease infinite;
+}
+
+.loader div:nth-child(2) { animation-delay: 0.1s; }
+.loader div:nth-child(3) { animation-delay: 0.2s; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}

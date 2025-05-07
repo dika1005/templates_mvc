@@ -18,4 +18,12 @@ class data extends Controller{
         $this->view('data/detail', $data);
         $this->view('templates/footer');
     }
+
+    public function tambah() 
+    {
+        $data['judul'] = 'Tambah Data';
+        $this->view('templates/header', $data);
+        $this->view('data/tambah', $data);
+        $this->view('templates/footer');
+    }
 }

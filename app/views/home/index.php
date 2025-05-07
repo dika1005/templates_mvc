@@ -82,8 +82,9 @@
     </div>
   </div>
 </section>
+
 <section>
-<div class="container">
+<div class="container-contact">
   <div class="contact-section">
     <div class="contact-form">
       <h2>Form Kontak</h2>

@@ -1,6 +1,6 @@
 <?php
 
-define ('BASEURL', 'http://localhost/PROJECT1/public');
+define ('BASEURL', 'http://localhost/TEMPLATES_MVC/public');
 
 define ('DB_HOST', 'localhost');
 define ('DB_USER', 'root');

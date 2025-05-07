@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Registrasi</title>
-  <link rel="stylesheet" href="../../../public/css/reg.css">
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/reg.css">
 </head>
+
 <body>
   <div class="container">
     <div class="title">
       Form Registrasi
     </div>
     <div class="content">
-      <form action="#">
+      <form action="<?= BASEURL1; ?>/register/store" method="post">
         <div class="user-details">
           <div class="input-box">
             <span class="details">NIK</span>
@@ -66,4 +68,5 @@
     </div>
   </div>
 </body>
+
 </html>

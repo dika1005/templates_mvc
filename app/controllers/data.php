@@ -9,4 +9,13 @@ class data extends Controller{
         $this->view('data/index', $data);
         $this->view('templates/footer');
     }
+    
+    public function detail($id) 
+    {
+        $data['judul'] = 'Detail Data';
+        $data['dta'] =  $this->model('Data_model')->getDataById($id);
+        $this->view('templates/header', $data);
+        $this->view('data/detail', $data);
+        $this->view('templates/footer');
+    }
 }

@@ -187,7 +187,7 @@ nav a:hover {
 /* BLOG */
 #blog {
   padding: 9rem 0 8rem;
-  background-color: #a5bedd;
+  background-color: #e0f2fe;
 }
 
 #blog .container {
@@ -203,11 +203,11 @@ nav a:hover {
 }
 
 #blog .subtitle {
-  font-size: 1.1em;
   font-weight: 600;
+  text-transform: uppercase;
   color: #0ea5e9;
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
+  font-size: 1.1em;
 }
 
 #blog .title {
@@ -219,14 +219,15 @@ nav a:hover {
 
 #blog .description {
   font-size: 1em;
-  color: #64748b;
+  color: #475569;
 }
 
 #blog .card-wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
 }
 
 #blog .card {
@@ -236,21 +237,36 @@ nav a:hover {
   overflow: hidden;
   max-width: 350px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#blog .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3);
 }
 
 #blog .card img {
+  height: 200px; /* Sesuaikan tinggi */
   width: 100%;
-  display: block;
+  object-fit: cover; /* Crop otomatis agar tetap proporsional */
 }
 
+
 #blog .card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 2rem 1.5rem;
+  background-color: #f0f9ff;
 }
 
 #blog .card-content h3 a {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #1e40af;
   text-decoration: none;
   margin-bottom: 1rem;
   display: block;
@@ -262,7 +278,8 @@ nav a:hover {
 
 #blog .card-content p {
   font-size: 0.95rem;
-  color: #475569;
+  color: #334155;
+  flex-grow: 1;
   margin-bottom: 1.5rem;
   line-height: 1.5;
 }
@@ -274,12 +291,27 @@ nav a:hover {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
-  transition: opacity 0.3s;
+  display: inline-block;
+  transition: opacity 0.3s ease;
+  text-align: center;
 }
 
 #blog .btn:hover {
   opacity: 0.8;
 }
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  #blog .card-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #blog .card {
+    max-width: 100%;
+  }
+}
+
 
 /* CONTACT */
 .container {

@@ -1,63 +1,50 @@
-<script src="https://cdn.tailwindcss.com"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NamaWebKamu</title>
+  <link rel="stylesheet" href=" <?= BASEURL; ?> /css/footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
 
-  <!-- Konten utama -->
-  <main class="flex-grow">
+  <main class="main-content">
     <!-- Isi konten web kamu di sini -->
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-10">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-left">
-      
-      <!-- Brand / Logo -->
-      <div>
-        <h2 class="text-2xl font-bold tracking-wide">✨ NamaWebKamu</h2>
-        <p class="text-sm text-gray-400 mt-2">Membangun web yang meledak dengan kreativitas!</p>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <h2>✨ Posyandu Mawar Manis</h2>
+          <p>Rt 08 Rw 02 Blok Pahing Desa Sidaraja</p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-social">
+          <a href="#" class="icon twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="icon facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="icon instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="icon youtube"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="icon github"><i class="fab fa-github"></i></a>
+        </div>
       </div>
 
-      <!-- Navigation Links -->
-      <div class="space-y-2">
-        <a href="#" class="block text-gray-400 hover:text-white transition duration-300">Privacy Policy</a>
-        <a href="#" class="block text-gray-400 hover:text-white transition duration-300">Terms of Service</a>
-        <a href="#" class="block text-gray-400 hover:text-white transition duration-300">Contact</a>
+      <div class="footer-bottom">
+        &copy; 2025 Posyandu Mawar Manis. All rights reserved.
       </div>
-
-      <!-- Social Media -->
-      <div class="flex justify-center md:justify-end space-x-5">
-        <!-- Twitter -->
-        <a href="#" class="text-gray-400 hover:text-blue-400 transition duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69a4.15 4.15 0 0 0 1.82-2.29 8.29 8.29 0 0 1-2.63 1 4.13 4.13 0 0 0-7.14 3.76A11.72 11.72 0 0 1 3.15 4.1a4.13 4.13 0 0 0 1.28 5.51 4.09 4.09 0 0 1-1.86-.51v.05a4.13 4.13 0 0 0 3.31 4.05 4.16 4.16 0 0 1-1.85.07 4.13 4.13 0 0 0 3.86 2.87A8.3 8.3 0 0 1 2 19.53a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.26 11.68-11.68 0-.18 0-.35-.01-.53A8.34 8.34 0 0 0 24 5.1a8.19 8.19 0 0 1-2.36.65 4.13 4.13 0 0 0 1.82-2.28z"/></svg>
-        </a>
-        <!-- Facebook -->
-        <a href="#" class="text-gray-400 hover:text-blue-600 transition duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.325 24H12.82v-9.294H9.692v-3.622h3.127V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.406 24 24 23.408 24 22.674V1.326C24 .592 23.406 0 22.675 0"/></svg>
-        </a>
-        <!-- Instagram -->
-        <a href="#" class="text-gray-400 hover:text-pink-500 transition duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.974.974 1.246 2.241 1.308 3.608.058 1.266.069 1.646.069 4.85s-.011 3.584-.069 4.85c-.062 1.366-.334 2.633-1.308 3.608-.974.974-2.241 1.246-3.608 1.308-1.266.058-1.646.069-4.85.069s-3.584-.011-4.85-.069c-1.366-.062-2.633-.334-3.608-1.308-.974-.974-1.246-2.241-1.308-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.974-.974 2.241-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.771.127 4.659.392 3.678 1.373 2.697 2.354 2.432 3.466 2.375 4.748 2.317 6.028 2.305 6.437 2.305 12c0 5.563.012 5.972.07 7.252.057 1.282.322 2.394 1.303 3.375.981.981 2.093 1.246 3.375 1.303 1.28.058 1.689.07 7.252.07s5.972-.012 7.252-.07c1.282-.057 2.394-.322 3.375-1.303.981-.981 1.246-2.093 1.303-3.375.058-1.28.07-1.689.07-7.252s-.012-5.972-.07-7.252c-.057-1.282-.322-2.394-1.303-3.375-.981-.981-2.093-1.246-3.375-1.303C15.668.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
-        </a>
-        <!-- LinkedIn -->
-        <a href="#" class="text-gray-400 hover:text-blue-700 transition duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg>
-        </a>
-        <!-- YouTube -->
-        <a href="#" class="text-gray-400 hover:text-red-600 transition duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.112C19.692 3.5 12 3.5 12 3.5s-7.692 0-9.386.574a2.994 2.994 0 0 0-2.112 2.112C0 7.88 0 12 0 12s0 4.12.502 5.814a2.994 2.994 0 0 0 2.112 2.112C4.308 20.5 12 20.5 12 20.5s7.692 0 9.386-.574a2.994 2.994 0 0 0 2.112-2.112C24 16.12 24 12 24 12s0-4.12-.502-5.814zM9.545 15.568V8.432l6.545 3.568-6.545 3.568z"/></svg>
-        </a>
-        <!-- Github -->
-        <a href="#" class="text-gray-400 hover:text-gray-300 transition duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 0 1 3.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        </a>
-      </div>
-
     </div>
+  </footer>
 
-    <div class="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-500">
-      &copy; 2025 NamaWebKamu. All rights reserved.
-    </div>
-  </div>
-</footer>
 </body>
-
 </html>

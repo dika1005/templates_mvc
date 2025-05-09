@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.footer {
+  background-color: #111827;
+  color: white;
+  padding: 60px 0;
+}
+
+.footer-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer-brand h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.footer-brand p {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-links a {
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: 20px;
+}
+
+.footer-social .icon {
+  color: #9ca3af;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social .twitter:hover {
+  color: #1DA1F2;
+}
+
+.footer-social .facebook:hover {
+  color: #4267B2;
+}
+
+.footer-social .instagram:hover {
+  color: #E4405F;
+}
+
+.footer-social .linkedin:hover {
+  color: #0077B5;
+}
+
+.footer-social .youtube:hover {
+  color: #FF0000;
+}
+
+.footer-social .github:hover {
+  color: #f0f6fc;
+}
+
+.footer-bottom {
+  border-top: 1px solid #374151;
+  margin-top: 40px;
+  padding-top: 16px;
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+}

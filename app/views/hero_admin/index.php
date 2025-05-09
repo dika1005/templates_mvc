@@ -1,5 +1,15 @@
 <!-- KONTEN HALAMAN -->
-<link rel="stylesheet" href="navbar.css" />
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Admin</title>
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/admin.css">
+</head>
+<body>
+  <!-- Kontenmu di sini -->
+   
 <section class="content-section">
     <div class="container">
         <h1>Selamat Datang di Admin Panel</h1>
@@ -12,3 +22,5 @@
             </div>
         </div>
     </div>
+</body>
+</html>

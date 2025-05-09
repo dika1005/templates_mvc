@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="../../../public/css/home.css">
-<link rel="stylesheet" href="../../../public/css/.css">
-<script src="/js/scroll.js"></script>
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/home.css">
+<script src=" <?= BASEURL;?>/js/scroll.js"></script>
 
-<script src="<? BASEURL; ?>/js/scroll.js"></script>
 
 <section id="hero" class="hero">
   <p class="ps">Selamat Datang di</p>

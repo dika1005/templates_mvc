@@ -14,7 +14,7 @@
       Form Registrasi
     </div>
     <div class="content">
-      <form action="<?= BASEURL1; ?>/register/store" method="post">
+      <form action="<?= BASEURL; ?>/register/store" method="post">
         <div class="user-details">
           <div class="input-box">
             <span class="details">NIK</span>

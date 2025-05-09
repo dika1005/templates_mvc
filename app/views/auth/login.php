@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Form</title>
-    <link rel="stylesheet" href="../public/css/styleLog.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/login.css">
 </head>
 
 <body>
@@ -26,6 +26,7 @@
                     <option value="user">User</option>
                 </select>
                 <button type="submit">Login</button>
+                <p>Belum punya akun? <a href="<?= BASEURL; ?>/auth/register">Daftar di sini</a></p>
             </form>
         </div>
     </div>

@@ -23,7 +23,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 20px;
+  padding: 20px 20px;
   background-color: transparent;
   color: rgb(117, 159, 252);
   display: flex;
@@ -41,7 +41,7 @@ body.scrolled header {
 }
 
 .logo img {
-  width: 40px;
+  width: 50px;
   height: auto;
 }
 
@@ -138,26 +138,26 @@ nav a:hover {
 
 /* ABOUT */
 .about {
-  max-width: 1200px;
-  margin: auto;
-  padding: 10% 5%;
+  width: 100vw;
+  padding: 10% 8%;
   background-color: #fff;
 }
 
 .about-content {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 40px;
 }
 
 .about-text {
   flex: 1 1 500px;
+  min-width: 300px;
 }
 
 .about-text .head {
-  font-size: 2em;
+  font-size: 2.5em;
   color: black;
 }
 
@@ -167,7 +167,7 @@ nav a:hover {
 }
 
 .about-text p {
-  font-size: 1.3em;
+  font-size: 1.5em;
   line-height: 1.9;
   color: #333;
   text-align: justify;
@@ -175,13 +175,15 @@ nav a:hover {
 
 .about-img {
   flex: 1 1 500px;
+  min-width: 300px;
   text-align: center;
 }
 
 .about-img img {
   width: 100%;
-  max-width: 500px;
+  max-width: 100%;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 /* BLOG */

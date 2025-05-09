@@ -16,10 +16,10 @@
         <nav>
             <ul class="nav-list">
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#tentang">About</a></li>
                 <li><a href="#blog">Artikel</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a target="_self" href="/user/dashboard.php">Login</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a target="_self" href="<?= BASEURL; ?>/auth/login">Login</a></li>
             </ul>
         </nav>
     </header>

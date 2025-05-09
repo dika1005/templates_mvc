@@ -4,11 +4,13 @@ class auth extends Controller
 {
     public function index()
     {
-        $this->view('auth/login');
+        $data['judul'] = 'Login';
+        $this->view('auth/login' , $data);
     }
 
     public function register()
     {
-        $this->view('auth/register');
+        $data['judul'] = 'Register';
+        $this->view('auth/register', $data);
     }
 }

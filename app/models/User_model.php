@@ -25,20 +25,28 @@ class User_model
 
     public function tambahDataUser($data)
     {
-        $query = "INSERT INTO Users (NIK, Nama, Umur, Tb, Bb, Alamat, Jk)
-              VALUES (:NIK, :Nama, :Umur, :Tb, :Bb, :Alamat, :Jk)";
+        try {
+            $query = "INSERT INTO Users (NIK, Nama, Umur, Tb, Bb, Alamat, Jk)
+                  VALUES (:NIK, :Nama, :Umur, :Tb, :Bb, :Alamat, :Jk)";
 
-        $this->db->query($query);
-        $this->db->bind('NIK', $data['NIK']);
-        $this->db->bind('Nama', $data['nama']);
-        $this->db->bind('Umur', $data['umur']);
-        $this->db->bind('Tb', $data['tinggi']);
-        $this->db->bind('Bb', $data['berat']);
-        $this->db->bind('Alamat', $data['alamat']);
-        $this->db->bind('Jk', $data['gender']);
+            $this->db->query($query);
+            $this->db->bind('NIK', $data['NIK']);
+            $this->db->bind('Nama', $data['nama']);
+            $this->db->bind('Umur', $data['umur']);
+            $this->db->bind('Tb', $data['tinggi']);
+            $this->db->bind('Bb', $data['berat']);
+            $this->db->bind('Alamat', $data['alamat']);
+            $this->db->bind('Jk', $data['gender']);
 
-        $this->db->execute();
+            $this->db->execute();
 
-        return $this->db->rowCount();
+            return 1;
+        } catch (PDOException $e) {
+            if ($e->errorInfo[1] == 1062) {
+                return 'duplikat'; // NIK sudah ada
+            } else {
+                return 0; // Error lain
+            }
+        }
     }
 }

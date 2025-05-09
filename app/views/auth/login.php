@@ -1,10 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['pesan'])) {
+    echo '<p style="color: green; font-weight: bold;">' . $_SESSION['pesan'] . '</p>';
+    unset($_SESSION['pesan']);
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
-    <title>Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $data['judul']; ?></title>
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/login.css">
+
 </head>
 
 <body>

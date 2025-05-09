@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+if (isset($_SESSION['pesan'])) {
+    echo '<p style="color: green; font-weight: bold;">' . $_SESSION['pesan'] . '</p>';
+    unset($_SESSION['pesan']);
+}
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Login Form</title>
-    <link rel="stylesheet" href="<?= BASEURL; ?>/css/login.css">
-</head>
+
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/login.css">
 
 <body>
     <div class="container-wrapper">

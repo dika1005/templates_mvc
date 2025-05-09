@@ -4,6 +4,15 @@
   <div class="title">
     Form Registrasi
   </div>
+
+  <?php session_start(); ?>
+    <?php if (isset($_SESSION['pesan'])): ?>
+      <p style="color: red; text-align: center; font-weight: bold;">
+        <?= $_SESSION['pesan']; ?>
+        <?php unset($_SESSION['pesan']); ?>
+      </p>
+    <?php endif; ?>
+
   <div class="content">
     <form action="<?= BASEURL; ?>/User/tambah" method="post">
       <div class="user-details">
@@ -17,15 +26,15 @@
         </div>
         <div class="input-box">
           <span class="details">Umur</span>
-          <input type="text" id="umur" name="umur" placeholder="Masukkan umur" required>
+          <input type="number" id="umur" name="umur" placeholder="Masukkan umur" required>
         </div>
         <div class="input-box">
-          <span class="details">Tinggi Badan</span>
-          <input type="text" id="tinggi" name="tinggi" placeholder="Masukkan tinggi badan" required>
+          <span class="details">Tinggi Badan (cm)</span>
+          <input type="number" id="tinggi" name="tinggi" placeholder="Masukkan tinggi badan" required>
         </div>
         <div class="input-box">
-          <span class="details">Berat Badan</span>
-          <input type="text" id="berat" name="berat" placeholder="Masukkan berat badan" required>
+          <span class="details">Berat Badan (kg)</span>
+          <input type="number" id="berat" name="berat" placeholder="Masukkan berat badan" required>
         </div>
         <div class="input-box">
           <span class="details">Alamat</span>
@@ -35,15 +44,14 @@
 
       <div class="gender-details">
         <span class="gender-title">Jenis Kelamin</span>
-        <input type="radio" name="gender" id="dot-1" value="Laki-Laki">
-        <input type="radio" name="gender" id="dot-2" value="Perempuan">
-
         <div class="category">
           <label for="dot-1">
+            <input type="radio" name="gender" id="dot-1" value="Laki-Laki" required>
             <span class="dot one"></span>
             <span class="gender">Laki-Laki</span>
           </label>
           <label for="dot-2">
+            <input type="radio" name="gender" id="dot-2" value="Perempuan">
             <span class="dot two"></span>
             <span class="gender">Perempuan</span>
           </label>

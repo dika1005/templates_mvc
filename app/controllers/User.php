@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class User extends Controller
 {
@@ -21,9 +21,20 @@ class User extends Controller
 
     public function tambah()
     {
-        if($this->model('User_model')->tambahDataUser($_POST) > 0) {
-           header('Location: ' . BASEURL . '/user');
-           exit;
+        $hasil = $this->model('User_model')->tambahDataUser($_POST);
+
+        if ($hasil === 1) {
+            $_SESSION['pesan'] = 'Registrasi berhasil! Silakan login.';
+            header('Location: ' . BASEURL . '/auth/login');
+            exit;
+        } elseif ($hasil === 'duplikat') {
+            $_SESSION['pesan'] = 'NIK sudah terdaftar! Coba login saja.';
+            header('Location: ' . BASEURL . '/auth/register');
+            exit;
+        } else {
+            $_SESSION['pesan'] = 'Registrasi gagal! Coba lagi ya!';
+            header('Location: ' . BASEURL . '/auth/register');
+            exit;
         }
     }
 }

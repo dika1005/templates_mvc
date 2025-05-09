@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="<?= BASEURL; ?>/css/home.css">
+<link rel="stylesheet" href="../../../public/css/home.css">
+<link rel="stylesheet" href="../../../public/css/.css">
+<script src="/js/scroll.js"></script>
 
 <script src="<? BASEURL; ?>/js/scroll.js"></script>
 

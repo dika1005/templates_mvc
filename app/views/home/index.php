@@ -53,7 +53,7 @@
             <p>
               Aku anak sehat, tubuhku kuat, berat badanku ditimbang selalu, Posyandu menunggu setiap waktu. Posyandu kini apa kabar ya?
             </p>
-            <a href="#" class="btn">Selengkapnya</a>
+            <a href="https://www.halodoc.com/artikel/ini-alasan-pentingnya-rutin-membawa-balita-ke-posyandu?srsltid=AfmBOopURSqOc7A93xMwS3e8z02wgMbaC6Lk-EINfv7ODzcFnLznUbKE" class="btn">Selengkapnya</a>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
             <p>
               Gizi memiliki peran penting dalam proses tumbuh kembang anak balita. Jika kebutuhan gizi balita tidak terpenuhi dengan baik, hal ini akan dapat membuat pertumbuhan dan perkembangannya terganggu dan dampaknya mungkin akan terlihat hingga ia dewasa.
             </p>
-            <a href="#" class="btn">Selengkapnya</a>
+            <a href="https://www.halodoc.com/artikel/panduan-pemenuhan-gizi-balita-usia-13-tahun?srsltid=AfmBOorBfPpSBCBi0CsArvf17ugkzFboLLd_VIkG2bqMjqMR62uB0rAq" class="btn">Selengkapnya</a>
           </div>
         </div>
       </div>

@@ -1,107 +1,81 @@
-/* Reset margin dan padding */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body dan header */
+/* Body Styling */
 body {
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f4f4f4;
 }
 
-/* Header dan logo */
+/* Header Styling */
 header {
-  background-color: #2c3e50;
-  padding: 10px 20px;
+  background-color: #3498db;
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header .logo img {
-  width: 120px;
-  height: auto;
+.logo img {
+  height: 50px;
+  margin-left: 20px;
 }
 
-/* Navigation styles */
 nav {
-  flex: 1;
+  margin-right: 20px;
 }
 
 .nav-list {
   list-style: none;
   display: flex;
-  justify-content: flex-end;
+  gap: 20px;
 }
 
 .nav-list li {
-  margin-left: 20px;
+  display: inline-block;
 }
 
 .nav-list a {
   text-decoration: none;
   color: white;
-  font-size: 16px;
-  padding: 10px;
-  transition: color 0.3s, background-color 0.3s;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
 }
 
 .nav-list a:hover {
-  color: #3498db;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Media query untuk mobile */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 20px;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  nav {
+    width: 100%;
+    text-align: center;
   }
 
   .nav-list {
-    display: none;
-    width: 100%;
     flex-direction: column;
     padding: 0;
+    margin: 0;
   }
 
   .nav-list li {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  header.active .nav-list {
-    display: flex;
+    margin-bottom: 10px;
   }
 
   .nav-list a {
-    font-size: 18px;
-    padding: 15px;
-  }
-
-  /* Hamburger icon */
-  .hamburger {
-    display: block;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
-  }
-}
-
-/* Style untuk hamburger toggle */
-.hamburger {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
+    font-size: 1.2rem;
+    padding: 12px;
   }
 }

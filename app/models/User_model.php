@@ -16,22 +16,35 @@ class User_model
         return $this->db->resultSet();
     }
 
-    public function getUserByNIK($NIK)
+    public function findByIdentifier($identifier)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NIK = :NIK');
-        $this->db->bind('NIK', $NIK);
-        return $this->db->single();
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NIK = :identifier');
+        $this->db->bind('identifier', $identifier);
+        $user = $this->db->single();
+        return $user;
     }
 
     public function tambahDataUser($data)
     {
         try {
-            $query = "INSERT INTO Users (NIK, Nama, Umur, Alamat, Jk) 
-                      VALUES (:NIK, :Nama, :Umur, :Alamat, :Jk)";
+            if (!isset($data['password'])) {
+                return 0;
+            }
+
+            $plainPassword = $data['password'];
+            $hashedPassword = password_hash($plainPassword, PASSWORD_DEFAULT);
+
+            if ($hashedPassword === false) {
+                return 0;
+            }
+
+            $query = "INSERT INTO Users (NIK, Nama, Password, Umur, Alamat, Jk)
+                      VALUES (:NIK, :Nama, :Password, :Umur, :Alamat, :Jk)";
 
             $this->db->query($query);
             $this->db->bind('NIK', $data['NIK']);
             $this->db->bind('Nama', $data['nama']);
+            $this->db->bind('Password', $hashedPassword);
             $this->db->bind('Umur', $data['umur']);
             $this->db->bind('Alamat', $data['alamat']);
             $this->db->bind('Jk', $data['gender']);

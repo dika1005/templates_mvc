@@ -1,8 +1,4 @@
 <?php
-// Ensure session is started at the very beginning of the application
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
 
 class Auth extends Controller
 {
@@ -10,28 +6,20 @@ class Auth extends Controller
     {
         $data['judul'] = 'Login';
 
-        // Check if there's a message in the session (set by procesRegistrasi or elsewhere)
-        // We only want to display it once, so we retrieve and then unset it.
         if (isset($_SESSION['pesan'])) {
             $data['message'] = $_SESSION['pesan'];
-            $data['message_type'] = $_SESSION['pesan_tipe'] ?? ''; // Get the type (e.g., 'sukses', 'error')
-
-            // Unset the session variables so the message doesn't reappear
+            $data['message_type'] = $_SESSION['pesan_tipe'] ?? '';
             unset($_SESSION['pesan']);
             unset($_SESSION['pesan_tipe']);
         } else {
-            // Ensure these keys exist in the data array even if no message
             $data['message'] = null;
             $data['message_type'] = '';
         }
 
-        // Pass the data array (which now includes potential message and type) to the view
-        $this->view('auth/login', $data); // Assuming your framework uses $this->view('view_name', $data)
-        // If your framework specifically requires the 'data:' syntax:
-        // $this->view('auth/login', data: $data);
-
+        $this->view('auth/login', $data);
     }
 
+    // Fungsi untuk proses registrasi
     public function register()
     {
         $data['judul'] = 'Register';
@@ -42,18 +30,17 @@ class Auth extends Controller
         unset($_SESSION['pesan']);
         unset($_SESSION['pesan_tipe']);
 
-        // Assuming your framework uses $this->view('view_name', $data)
         $this->view('auth/register', $data);
-        // If your framework specifically requires the 'data:' syntax:
-        // $this->view('auth/register', data: $data);
     }
 
+    // Fungsi untuk memproses registrasi
     public function prosesRegistrasi()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $inputData = [
                 'NIK'       => filter_input(INPUT_POST, 'NIK', FILTER_SANITIZE_STRING),
                 'nama'      => filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING),
+                'password'  => filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING),
                 'umur'      => filter_input(INPUT_POST, 'umur', FILTER_VALIDATE_INT),
                 'alamat'    => filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING),
                 'gender'    => filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_STRING)
@@ -63,11 +50,12 @@ class Auth extends Controller
             if (empty($inputData['NIK'])) {
                 $errors[] = "NIK wajib diisi.";
             }
-            // Add NIK format/length validation if needed
             if (empty($inputData['nama'])) {
                 $errors[] = "Nama lengkap wajib diisi.";
             }
-            // Check specifically for false (failed filter) or null (not set)
+            if (empty($inputData['password'])) {
+                $errors[] = "Password wajib diisi.";
+            }
             if ($inputData['umur'] === false || $inputData['umur'] === null || $inputData['umur'] <= 0) {
                 $errors[] = "Umur tidak valid atau kosong.";
             }
@@ -92,19 +80,18 @@ class Auth extends Controller
             if ($hasil === 1) {
                 $_SESSION['pesan'] = "Registrasi berhasil! Silakan login untuk melanjutkan.";
                 $_SESSION['pesan_tipe'] = "sukses";
-                // Redirect to the login page
                 header('Location: ' . BASEURL . '/auth/login');
                 exit;
             } elseif ($hasil === 'duplikat') {
                 $_SESSION['pesan'] = "Registrasi gagal! NIK yang Anda masukkan sudah terdaftar.";
                 $_SESSION['pesan_tipe'] = "error";
-                $_SESSION['form_data'] = $_POST; // Keep the submitted data
+                $_SESSION['form_data'] = $_POST;
                 header('Location: ' . BASEURL . '/auth/register');
                 exit;
             } else {
                 $_SESSION['pesan'] = "Registrasi gagal! Terjadi kesalahan pada server. Silakan coba lagi.";
                 $_SESSION['pesan_tipe'] = "error";
-                $_SESSION['form_data'] = $_POST; // Keep the submitted data
+                $_SESSION['form_data'] = $_POST;
                 header('Location: ' . BASEURL . '/auth/register');
                 exit;
             }
@@ -115,17 +102,50 @@ class Auth extends Controller
         }
     }
 
-    // You would likely add a procesLogin method here later
-    /*
-    public function procesLogin() {
-        // Logic to handle login POST requests
-    }
-    */
+    // Fungsi untuk memproses login
+    public function prosesLogin()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    // And maybe a logout method
-    /*
-    public function logout() {
-        // Logic to destroy session and redirect
+            $identifier = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+            $role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            if (empty($identifier) || empty($password) || empty($role)) {
+                $_SESSION['pesan'] = 'Username/NIK, Password, dan Role wajib diisi!';
+                $_SESSION['pesan_tipe'] = 'error';
+                header('Location: ' . BASEURL . '/auth/login');
+                exit;
+            }
+
+            $userModel = $this->model('User_model');
+
+            // Panggil metode model yang sudah diperbaiki (misal: findByIdentifier)
+            $user = $userModel->findByIdentifier($identifier);
+
+            if ($user && password_verify($password, $user['Password'])) {
+                // Login Berhasil
+                $_SESSION['user'] = $user;
+                $_SESSION['role'] = $role;
+
+                // Redirect berdasarkan role ke RUTE yang BENAR
+                if ($role == 'admin') {
+                    header('Location: ' . BASEURL . '/admin/index');
+                } else {
+                    header('Location: ' . BASEURL . '/user/profile');
+                }
+
+                exit;
+            } else {
+                // Login Gagal
+                $_SESSION['pesan'] = 'Username/NIK atau Password salah!';
+                $_SESSION['pesan_tipe'] = 'error';
+                header('Location: ' . BASEURL . '/auth/login');
+                exit;
+            }
+        } else {
+            header('Location: ' . BASEURL . '/auth/login');
+            exit;
+        }
     }
-    */
 }

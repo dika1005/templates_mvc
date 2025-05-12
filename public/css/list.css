@@ -1,11 +1,7 @@
 /* Styling untuk tabel */
 body {
-  background: linear-gradient(
-      135deg,
-      rgba(52, 152, 219, 0.3),
-      rgba(41, 128, 185, 0.3)
-    ),
-    url("nama-gambar.jpg");
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+
   min-height: 100vh;
   padding: 24px;
   font-family: Arial, sans-serif;

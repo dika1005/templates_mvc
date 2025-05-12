@@ -28,4 +28,5 @@ class Data_model
         $this->db->query("SELECT * FROM dataposyandu");
         return $this->db->resultSet();
     }
+    
 }

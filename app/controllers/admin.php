@@ -7,14 +7,14 @@ class admin extends Controller
         $data['judul'] = 'Home admin';
         $this->view('templates/navbar', $data);
         $this->view('admin/index');
-        $this->view('templates/footer');
+        // $this->view('templates/footer');
     }
     public function delete()
     {
         $data['judul'] = 'Delete admin';
         $this->view('templates/navbar', $data);
         $this->view('admin/delete');
-        $this->view('templates/footer');
+        // $this->view('templates/footer');
     }
     public function list()
     {
@@ -23,7 +23,7 @@ class admin extends Controller
 
         $this->view('templates/navbar', $data);
         $this->view('admin/list', $data); // <-- PENTING! kirim $data ke view!
-        $this->view('templates/footer');
+        // $this->view('templates/footer');
     }
 
 
@@ -67,7 +67,7 @@ class admin extends Controller
     // Tampilkan tampilan
     $this->view('templates/navbar', $data);
     $this->view('admin/search', $data);
-    $this->view('templates/footer');
+    // $this->view('templates/footer');
 }
 
 
@@ -79,6 +79,6 @@ class admin extends Controller
         $data['judul'] = 'Input admin';
         $this->view('templates/navbar', $data);
         $this->view('admin/input');
-        $this->view('templates/footer');
+        // $this->view('templates/footer');
     }
 }

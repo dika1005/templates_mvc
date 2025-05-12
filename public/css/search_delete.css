@@ -4,7 +4,8 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: #cce6ff;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+
     font-family: 'Segoe UI', sans-serif;
 }
 .form-wrapper {

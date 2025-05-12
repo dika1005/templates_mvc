@@ -9,13 +9,20 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
   font-family: "Poppins", sans-serif;
   background-color: #f4f8ff;
   color: #1f3c88;
+  overflow-x: hidden; /* tambahin juga di sini buat jaga-jaga */
 }
+
 
 /* HEADER */
   header {

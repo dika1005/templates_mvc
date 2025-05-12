@@ -38,6 +38,7 @@
             vertical-align: middle;
             /* Agar icon sejajar dengan teks */
         }
+        
     </style>
 </head>
 

@@ -4,11 +4,14 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    background-color: #cce6ff;
+    font-family: 'Segoe UI', sans-serif;
+}
+.form-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #cce6ff; /* bisa diganti sesuai selera */
-    font-family: 'Segoe UI', sans-serif;
+    min-height: calc(100vh - 100px); /* sisakan ruang untuk navbar */
 }
 
 /* Container untuk form dan hasil pencarian */

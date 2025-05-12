@@ -15,7 +15,7 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <img src="<?= BASEURL; ?>/img/" alt="Logo Posyandu" class="logo-img">
+        <img src="<?= BASEURL; ?>/img/logo.svg" alt="Logo Posyandu" class="logo-img">
       </div>
       <div class="nav-toggle" onclick="toggleMenu()">☰</div>
       <ul class="nav-links">

@@ -1,120 +1,115 @@
-/* Styling untuk tabel */
 body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
-  min-height: 100vh;
-  padding: 24px;
-  font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  padding: 24px;
+    max-width: 1700px;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    padding: 30px 40px; /* Lebih luas kiri-kanan dan atas-bawah */
+    transform: translateY(-40px);
+    transition: all 0.3s ease;
 }
+
+
 .center-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: calc(100vh - 60px); /* 60px disesuaikan dengan tinggi navbar */
-  padding-top: 10px;
-  box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center ;       /* Atas, bukan center penuh */
+    min-height: calc(100vh - 60px);
+    padding-top: 30px;
+    box-sizing: border-box;
 }
 
 h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #1e40af;
-  margin-bottom: 16px;
+    font-size: 2rem;               /* Lebih besar */
+    font-weight: bold;
+    color: #1e40af;
+    margin-bottom: 24px;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;             /* Ukuran isi tabel diperbesar */
 }
 
 thead {
-  background-color: #dbeafe;
+    background-color: #dbeafe;
 }
 
 th,
 td {
-  padding: 12px 16px;
-  border-bottom: 1px solid #bfdbfe;
-  text-align: left;
+    padding: 16px 20px;           /* Lebih lega */
+    border-bottom: 1px solid #bfdbfe;
+    text-align: left;
 }
 
 tbody tr:last-child td {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 button {
-  background-color: #60a5fa;
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+    background-color: #60a5fa;
+    color: white;
+    padding: 10px 18px;           /* Tombol lebih besar */
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #3b82f6;
+    background-color: #3b82f6;
 }
 
 /* Modal */
 #modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }
 
 #modal.active {
-  display: flex; /* Modal hanya akan tampil jika memiliki kelas 'active' */
+    display: flex;
 }
 
 .modal-content {
-  background-color: white;
-  border-radius: 1rem;
-  padding: 24px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    border-radius: 1rem;
+    padding: 32px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .modal-content h2 {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #1e40af;
-  margin-bottom: 16px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e40af;
+    margin-bottom: 20px;
 }
 
 .modal-content p {
-  margin-bottom: 8px;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
 }
 
 .modal-content .close-btn {
-  margin-top: 16px;
-  text-align: right;
-}
-
-button {
-  background-color: #60a5fa;
-  color: white;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #3b82f6;
+    margin-top: 20px;
+    text-align: right;
 }

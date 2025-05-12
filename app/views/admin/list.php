@@ -1,11 +1,23 @@
+<?php
+if (!isset($dataposyandu)) {
+    if (isset($data['dataposyandu'])) {
+        $dataposyandu = $data['dataposyandu'];
+    } else {
+        $dataposyandu = []; // fallback aman biar gak error
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Interaktif</title>
-<link rel="stylesheet" href="../../../public/css/list.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/list.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -20,22 +32,32 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Budi Santoso</td>
-                    <td>2025-05-01</td>
-                    <td>
-                        <button onclick="showModal('Budi Santoso', '2025-05-01', 'Jl. Mawar No. 12', 'Laki-laki', '25', '3374052505980001', '170', '65')">Lihat</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Siti Aminah</td>
-                    <td>2025-05-02</td>
-                    <td>
-                        <button onclick="showModal('Siti Aminah', '2025-05-02', 'Desa Sidaraja RT 08 RW 02', 'Perempuan', '22', '3374052505980002', '165', '55')">Lihat</button>
-                    </td>
-                </tr>
+                <?php if (!empty($dataposyandu)): ?>
+                    <?php $no = 1; ?>
+                    <?php foreach ($dataposyandu as $row): ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= htmlspecialchars($row['Nama']) ?></td>
+                            <td><?= date('Y-m-d') ?></td>
+                            <td>
+                                <button onclick="showModal(
+                                    '<?= htmlspecialchars($row['Nama']) ?>',
+                                    '<?= date('Y-m-d') ?>',
+                                    '<?= htmlspecialchars($row['Alamat']) ?>',
+                                    '<?= htmlspecialchars($row['Jk']) ?>',
+                                    '<?= htmlspecialchars($row['Umur']) ?>',
+                                    '<?= htmlspecialchars($row['NIK']) ?>',
+                                    '<?= htmlspecialchars($row['tinggi_badan']) ?>',
+                                    '<?= htmlspecialchars($row['berat_badan']) ?>'
+                                )">Lihat</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="4">Tidak ada data untuk ditampilkan.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
@@ -77,4 +99,5 @@
     </script>
 
 </body>
+
 </html>

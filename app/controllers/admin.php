@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class admin extends Controller {
+class admin extends Controller
+{
     public function index()
     {
         $data['judul'] = 'Home admin';
@@ -18,10 +19,15 @@ class admin extends Controller {
     public function list()
     {
         $data['judul'] = 'List admin';
+        $data['dataposyandu'] = $this->model('Data_model')->getAllDataPosyandu();
+
         $this->view('templates/navbar', $data);
-        $this->view('admin/list');
+        $this->view('admin/list', $data); // <-- PENTING! kirim $data ke view!
         $this->view('templates/footer');
     }
+
+
+
 
     public function search()
     {

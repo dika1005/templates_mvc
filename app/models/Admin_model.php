@@ -1,6 +1,6 @@
 <?php
 
-class User_model
+class Admin_model
 {
     private  $table = 'Admin';
     private $db;
@@ -22,5 +22,10 @@ class User_model
         $this->db->bind('identifier', $identifier);
         $user = $this->db->single();
         return $user;
+    }
+    public function getAllDataPosyandu()
+    {
+        $this->db->query("SELECT * FROM dataposyandu");
+        return $this->db->resultSet();
     }
 }

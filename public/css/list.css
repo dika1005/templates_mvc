@@ -1,136 +1,117 @@
-  .table-section.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 25px;
-    margin-top: 30px;
-  }
-  
-  .table-section h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .table-section h2 i {
-    color: #9b59b6;
-    font-size: 24px;
-  }
-  
-  .table-container {
-    overflow-x: auto;
-  }
-  
-  #dataTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #dataTable th,
-  #dataTable td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-  }
-  
-  #dataTable th {
-    background: #f8f9fa;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-  
-  #dataTable th i {
-    color: #9b59b6;
-    font-size: 20px;
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-  
-  #dataTable tbody tr:hover {
-    background: #f8f9fa;
-  }
-  /*  list Styles */
+/* Styling untuk tabel */
+body {
+  background: linear-gradient(
+      135deg,
+      rgba(52, 152, 219, 0.3),
+      rgba(41, 128, 185, 0.3)
+    ),
+    url("nama-gambar.jpg");
+  min-height: 100vh;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
 
-        body {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
 
-            min-height: 100vh;
-            padding: 24px;
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 1rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-        }
-        h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1e40af;
-            margin-bottom: 16px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        thead {
-            background-color: #dbeafe;
-        }
-        th, td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #bfdbfe;
-            text-align: left;
-        }
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-        button {
-            background-color: #60a5fa;
-            color: white;
-            padding: 6px 12px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #3b82f6;
-        }
-        #modal {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-        }
-        #modal.active {
-            display: flex;
-        }
-        .modal-content {
-            background-color: white;
-            border-radius: 1rem;
-            padding: 24px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        .modal-content h2 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #1e40af;
-            margin-bottom: 16px;
-        }
-        .modal-content p {
-            margin-bottom: 8px;
-        }
-        .modal-content .close-btn {
-            margin-top: 16px;
-            text-align: right;
-        }
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #dbeafe;
+}
+
+th,
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #bfdbfe;
+  text-align: left;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+button {
+  background-color: #60a5fa;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3b82f6;
+}
+
+/* Modal */
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#modal.active {
+  display: flex; /* Modal hanya akan tampil jika memiliki kelas 'active' */
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1e40af;
+  margin-bottom: 16px;
+}
+
+.modal-content p {
+  margin-bottom: 8px;
+}
+
+.modal-content .close-btn {
+  margin-top: 16px;
+  text-align: right;
+}
+
+button {
+  background-color: #60a5fa;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3b82f6;
+}

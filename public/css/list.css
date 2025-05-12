@@ -1,7 +1,6 @@
 /* Styling untuk tabel */
 body {
     background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
-
   min-height: 100vh;
   padding: 24px;
   font-family: Arial, sans-serif;
@@ -14,6 +13,14 @@ body {
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   padding: 24px;
+}
+.center-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px); /* 60px disesuaikan dengan tinggi navbar */
+  padding-top: 10px;
+  box-sizing: border-box;
 }
 
 h1 {

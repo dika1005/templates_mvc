@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/search_delete.css">
 </head>
 <body>
+    <div class="form-wrapper">
     <div class="container">
         <h2>Hapus Data Berdasarkan NIK</h2>
 
@@ -21,6 +22,7 @@
             <input type="text" id="nik_delete" name="nik" required placeholder="Masukkan NIK yang ingin dihapus">
             <input type="submit" value="Hapus Data" style="background: crimson;">
         </form>
+    </div>
     </div>
 </body>
 </html>

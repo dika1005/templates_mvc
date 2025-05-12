@@ -21,15 +21,24 @@ public function deleteByNik()
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nik = $_POST['nik'];
 
-        if ($this->model('Admin_model')->hapusDataByNik($nik)) {
+        // Memastikan model Admin_model di-load dengan benar
+        $adminModel = $this->model('Data_model'); // Memanggil model Admin_model
+
+        // Panggil fungsi hapusDataByNik
+        if ($adminModel->hapusDataByNik($nik)) {
+            // Redirect jika berhasil
             header('Location: ' . BASEURL . '/admin/delete?success=1');
             exit;
         } else {
+            // Redirect jika gagal
             header('Location: ' . BASEURL . '/admin/delete?error=1');
             exit;
         }
     }
 }
+
+
+
 
     public function list()
     {

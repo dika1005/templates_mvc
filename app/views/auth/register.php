@@ -23,7 +23,7 @@
         <div class="user-details">
           <div class="input-box">
             <span class="details">NIK</span>
-            <input type="text" id="NIK" name="NIK" placeholder="Masukkan NIK" required
+            <input type="text" id="NIK" name="NIK"maxlength="16" placeholder="Masukkan NIK" required
               value="<?= $data['form_data']['NIK'] ?? ''; ?>">
           </div>
           <div class="input-box">

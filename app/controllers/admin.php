@@ -27,15 +27,36 @@ class admin extends Controller
     }
 
 
-
-
     public function search()
     {
-        $data['judul'] = 'Search admin';
+        $data['judul'] = 'Pencarian Data'; // Set judul untuk tampilan
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nik = $_POST['nik'];
+
+            if (empty($nik)) {
+                $data['error'] = 'NIK tidak boleh kosong!';
+            } else {
+                // Panggil model untuk mencari data
+                $hasil_dari_model = $this->model('Data_model')->findByIdentifier($nik);
+
+                // Cek hasil dari model dan set data untuk view
+                if ($hasil_dari_model) {
+                    $data['hasil'] = $hasil_dari_model; // Data ditemukan, set variabel 'hasil' di array data
+                } else {
+                    $data['error'] = 'Data tidak ditemukan untuk NIK tersebut!'; // Data tidak ditemukan, set variabel 'error' di array data
+                }
+            }
+        }
+
+        // Tampilkan view. View akan memeriksa apakah $data['hasil'] atau $data['error'] ada.
         $this->view('templates/navbar', $data);
-        $this->view('admin/search');
+        $this->view('admin/search', $data); // Array $data berisi judul, mungkin hasil, mungkin error
         $this->view('templates/footer');
     }
+
+
+
 
     public function input()
     {

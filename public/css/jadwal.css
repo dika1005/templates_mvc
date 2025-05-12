@@ -1,0 +1,141 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f8ff;
+  margin: 0;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2, h3 {
+  text-align: center;
+  color: #0077cc;
+}
+
+.icon {
+  margin-right: 0.5rem;
+}
+
+.dropdown {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.schedule-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: #eaf4ff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card .emoji {
+  font-size: 2rem;
+}
+
+.progress-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  margin: 1rem auto;
+  border-radius: 50%;
+  background: conic-gradient(#00aaff 0% 0%, #dceeff 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #0077cc;
+  transition: background 0.5s ease;
+}
+
+.health-tip {
+  background: #f1fff7;
+  border-left: 6px solid #28a745;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 1s ease;
+}
+
+.health-tip h3 {
+  margin-top: 0;
+  color: #218838;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.back-btn {
+  display: inline-block;
+  margin: 2rem auto 0;
+  padding: 0.6rem 1.4rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .schedule-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .progress-circle {
+    width: 100px;
+    height: 100px;
+  }
+}

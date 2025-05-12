@@ -1,4 +1,6 @@
-<main>
+<link rel="stylesheet" href="<?= BASEURL; ?> /css/index.css">
+<body>
+  <main>
     <h1>Selamat Datang, Nama Pengguna!</h1>
     <p>Silakan pilih menu di navbar untuk mengakses fitur yang tersedia.</p>
 
@@ -14,3 +16,4 @@
       </table>
     </div>
   </main>
+</body>

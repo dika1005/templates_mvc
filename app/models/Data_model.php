@@ -2,7 +2,7 @@
 
 class Data_model
 {
-    private $table = 'data';
+    private $table = 'dataposyandu';
     private $db;
 
     public function __construct()
@@ -17,13 +17,13 @@ class Data_model
 
     public function getAllData()
     {
-       $this ->db->query('SELECT * FROM ' . $this->table);
-       return $this->db->resultSet();
+        $this->db->query('SELECT * FROM ' . $this->table);
+        return $this->db->resultSet();
     }
-    public function getDataById($id)
+    public function getDataByNIK($NIK)
     {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id = :id');
-        $this->db->bind('id', $id);
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NIK = :NIK');
+        $this->db->bind('NIK', $NIK);
         return $this->db->single();
     }
 }

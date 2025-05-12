@@ -9,13 +9,28 @@ class admin extends Controller
         $this->view('admin/index');
         // $this->view('templates/footer');
     }
-    public function delete()
-    {
-        $data['judul'] = 'Delete admin';
-        $this->view('templates/navbar', $data);
-        $this->view('admin/delete');
-        // $this->view('templates/footer');
+public function delete()
+{
+    $data['judul'] = 'Delete admin';
+    $this->view('templates/navbar', $data);
+    $this->view('admin/delete');
+}
+
+public function deleteByNik()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nik = $_POST['nik'];
+
+        if ($this->model('Admin_model')->hapusDataByNik($nik)) {
+            header('Location: ' . BASEURL . '/admin/delete?success=1');
+            exit;
+        } else {
+            header('Location: ' . BASEURL . '/admin/delete?error=1');
+            exit;
+        }
     }
+}
+
     public function list()
     {
         $data['judul'] = 'List admin';

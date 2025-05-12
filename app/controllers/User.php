@@ -4,13 +4,14 @@ class User extends Controller
 {
     public function index()
     {
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
-        $data['judul'] = 'User';
+        $data['judul'] = 'User Dashboard';
 
-        // Ambil notifikasi dari session (jika ada)
-        $data['message'] = $_SESSION['message'] ?? null;
-        unset($_SESSION['message']);
+        $data['message'] = $_SESSION['pesan'] ?? null;
+        unset($_SESSION['pesan']);
 
         $this->view('templates/navbarUser', $data);
         $this->view('user/index', $data);
@@ -19,100 +20,78 @@ class User extends Controller
 
     public function update()
     {
-        // Pastikan session dimulai. Lebih baik panggil sekali di entry point aplikasi.
-        // Jika belum dipanggil di sana, panggil di sini:
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
 
-        $data['judul'] = 'Update Data';
-        $data['message'] = null; // Inisialisasi variabel pesan
+        $data['judul'] = 'Update Data Pengguna';
+        $data['user'] = null;
+        $data['message'] = null;
 
-        // --- Handle Request POST (Saat form disubmit) ---
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // *** DEBUGGING: Lihat data yang diterima dari form ***
-            // echo "<h2>Debug POST Data:</h2>";
-            // var_dump($_POST);
+            $update_data = [
+                'NIK'    => $_POST['NIK'] ?? '',
+                'nama'   => $_POST['nama'] ?? '',
+                'umur'   => $_POST['umur'] ?? null,
+                'alamat' => $_POST['alamat'] ?? null,
+                'jk'     => $_POST['jk'] ?? '',
+            ];
 
-            // Pastikan NIK ada dalam data POST sebelum memanggil model
-            if (!isset($_POST['NIK']) || empty($_POST['NIK'])) {
-                $_SESSION['message'] = 'Gagal memperbarui data: NIK tidak ditemukan dalam data submit!';
-                // Redirect kembali ke halaman update atau halaman lain yang sesuai
+            if (isset($_POST['password']) && !empty($_POST['password'])) {
+                $update_data['password'] = $_POST['password'];
+            }
+
+            if (empty($update_data['NIK']) || empty($update_data['nama']) || empty($update_data['jk'])) {
+                $_SESSION['pesan'] = ['tipe' => 'danger', 'isi' => 'Gagal memperbarui data: Field NIK, Nama, atau Jenis Kelamin kosong.'];
                 header('Location: ' . BASEURL . '/user/update');
                 exit;
             }
 
-            // Panggil method update di model
-            $updateResult = $this->model('User_model')->updateDataUser($_POST);
+            $updateResult = $this->model('Data_model')->updateDataUser($update_data);
 
-            // *** DEBUGGING: Lihat hasil kembalian dari method update di model ***
-            // echo "<h2>Debug Update Result:</h2>";
-            // var_dump($updateResult);
-
-            // Periksa hasil pembaruan dari model
             if ($updateResult > 0) {
-                // Jika rowCount() > 0, berarti ada baris yang terpengaruh (berhasil diupdate)
-                $_SESSION['message'] = 'Data berhasil diperbarui!';
-                // Redirect ke halaman user index setelah sukses
+                $_SESSION['pesan'] = ['tipe' => 'success', 'isi' => 'Data berhasil diperbarui!'];
                 header('Location: ' . BASEURL . '/user');
                 exit;
             } else {
-                // Jika rowCount() 0, ada 2 kemungkinan: NIK tidak ditemukan ATAU data tidak berubah
-                // Jika model mengembalikan nilai selain integer (misal string 'duplikat' dari tambahDataUser,
-                // meskipun di updateDataUser mengembalikan int), Anda perlu tangani juga.
-                // Saat ini, updateDataUser hanya mengembalikan int (0 atau rowCount) atau mencetak error.
-
-                // Asumsi: Jika updateDataUser mengembalikan 0, itu karena NIK tidak ditemukan
-                // atau data yang disubmit sama persis dengan yang ada di database.
-                $_SESSION['message'] = 'Gagal memperbarui data. Data mungkin tidak berubah atau NIK tidak ditemukan.';
-
-                // Redirect kembali ke halaman update agar user bisa mencoba lagi atau melihat data saat ini
+                $_SESSION['pesan'] = ['tipe' => 'warning', 'isi' => 'Data tidak berubah atau pengguna dengan NIK tersebut tidak ditemukan.'];
                 header('Location: ' . BASEURL . '/user/update');
                 exit;
             }
-        }
+        } else {
+            if (isset($_SESSION['nik']) && !empty($_SESSION['nik'])) {
+                $user_nik = $_SESSION['nik'];
 
-        // --- BAGIAN INI DIJALANKAN KETIKA HALAMAN PERTAMA KALI DIBUKA (BUKAN POST) ---
+                $data['user'] = $this->model('Data_model')->findByIdentifier($user_nik);
 
-        // Ambil data user berdasarkan NIK yang tersimpan di session
-        if (isset($_SESSION['nik']) && !empty($_SESSION['nik'])) {
-            $data['user'] = $this->model('User_model')->findByIdentifier($_SESSION['nik']);
-
-            // Jika data user tidak ditemukan di database berdasarkan NIK di session
-            if (!$data['user']) {
-                $_SESSION['message'] = 'Data pengguna tidak ditemukan. Silakan login kembali.';
-                // Redirect ke halaman login
-                header('Location: ' . BASEURL . '/login'); // Ganti dengan URL halaman login Anda
+                if (!$data['user']) {
+                    $_SESSION['pesan'] = ['tipe' => 'danger', 'isi' => 'Data pengguna tidak ditemukan. Silakan login kembali.'];
+                    header('Location: ' . BASEURL . '/login');
+                    exit;
+                }
+            } else {
+                $_SESSION['pesan'] = ['tipe' => 'danger', 'isi' => 'Anda harus login untuk mengakses halaman ini.'];
+                header('Location: ' . BASEURL . '/login');
                 exit;
             }
 
-        } else {
-            // Jika NIK tidak ada di session (user belum login?)
-            $_SESSION['message'] = 'Anda harus login untuk mengakses halaman ini.';
-            // Redirect ke halaman login
-            header('Location: ' . BASEURL . '/login'); // Ganti dengan URL halaman login Anda
-            exit;
+            $data['message'] = $_SESSION['pesan'] ?? null;
+            unset($_SESSION['pesan']);
+
+            $this->view('templates/navbarUser', $data);
+            $this->view('user/update', $data);
+            $this->view('templates/footer');
         }
-
-        // *** DEBUGGING: Lihat data user yang diambil dari database sebelum form ditampilkan ***
-        // echo "<h2>Debug User Data Fetched:</h2>";
-        // var_dump($data['user']);
-
-
-        // Ambil message dari session (untuk pesan dari redirect sebelumnya, jika ada)
-        // Ini akan menampilkan pesan sukses/gagal dari attempt POST sebelumnya
-        $data['message'] = $_SESSION['message'] ?? null;
-        unset($_SESSION['message']); // Hapus pesan setelah diambil
-
-        // Load tampilan
-        $this->view('templates/navbarUser', $data);
-        $this->view('user/update', $data); // Tampilan form update
-        $this->view('templates/footer');
     }
 
     public function jadwal()
     {
-        $data['judul'] = 'Jadwal';
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $data['judul'] = 'Jadwal Posyandu';
+
         $this->view('templates/navbarUser', $data);
         $this->view('user/jadwal', $data);
         $this->view('templates/footer');

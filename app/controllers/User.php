@@ -33,7 +33,7 @@ class User extends Controller
         // Load tampilan
         $this->view('templates/navbarUser', $data); // Navbar
         $this->view('user/index', $data);        // Tampilan utama user dengan data
-        $this->view('templates/footer');           // Footer
+        $this->view('templates/footeradmin');           // Footer
     }
 
     public function update()
@@ -140,11 +140,11 @@ class User extends Controller
             // Load tampilan
             $this->view('templates/navbarUser', $data);
             $this->view('user/update', $data); // Tampilan form update
-            $this->view('templates/footer');
+            $this->view('templates/footeradmin'); 
         }
     }
 
-
+ 
     public function jadwal()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -155,6 +155,6 @@ class User extends Controller
 
         $this->view('templates/navbarUser', $data);
         $this->view('user/jadwal', $data);
-        $this->view('templates/footer');
+        $this->view('templates/footeradmin'); 
     }
 }

@@ -19,7 +19,7 @@ if (!isset($dataposyandu)) {
 </head>
 
 <body>
-
+    <div class="center-wrapper">
     <div class="container">
         <h1>📋 Data yang Sudah Ada</h1>
         <table>
@@ -61,7 +61,7 @@ if (!isset($dataposyandu)) {
             </tbody>
         </table>
     </div>
-
+</div>
     <!-- Modal -->
     <div id="modal">
         <div class="modal-content">

@@ -1,4 +1,13 @@
-<div class="container fade-in-up">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jadwal Posyandu</title>
+  <link rel="stylesheet" href="<?= BASEURL; ?>/css/jadwal.css">
+</head>
+<body>
+  <div class="container fade-in-up">
     <h2><span class="icon">📅</span> Jadwal Posyandu</h2>
 
     <select class="dropdown">
@@ -37,4 +46,6 @@
     <a href="index.html" class="back-btn">← Kembali ke Data User</a>
   </div>
 
-  <script src="../public/js/jadwal.js"></script>
+  <script src="<?= BASEURL; ?>/js/jadwal.js"></script>
+</body>
+</html>

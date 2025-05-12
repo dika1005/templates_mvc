@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    <div class="form-wrapper">
     <div class="container">
 
         <?php
@@ -79,7 +80,7 @@
         <?php endif; ?>
 
     </div>
-
+        </div>
     <script>
 
 

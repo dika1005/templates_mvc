@@ -61,4 +61,14 @@ class Data_model
         // Asumsi rowCount() mengembalikan jumlah baris yang diinsert (1 jika berhasil)
         return $this->db->rowCount();
     }
+ public function hapusDataByNik($nik)
+    {
+        $query = "DELETE FROM dataposyandu WHERE NIK = :nik";
+        $this->db->query($query);
+        $this->db->bind('nik', $nik);
+        $this->db->execute();
+
+        return $this->db->rowCount() > 0;
+    }
+
 }

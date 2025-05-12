@@ -81,18 +81,16 @@
     </div>
 
     <script>
+
+
         document.getElementById('searchForm').onsubmit = function() {
-            // Tampilkan loader saat form disubmit
+            // Show loader when form is submitted
             document.querySelector('.loader').style.display = 'block';
-            // Opsional: Anda bisa menyembunyikan tabel hasil atau pesan error sebelumnya
-            // document.getElementById('hasilPencarian').style.display = 'none';
-            // if (document.querySelector('p[style*="color:red"]')) {
-            //     document.querySelector('p[style*="color:red"]').style.display = 'none';
-            // }
+            document.getElementById('hasilPencarian').style.display = 'none';
+            if (document.querySelector('p[style*="color:red"]')) {
+                document.querySelector('p[style*="color:red"]').style.display = 'none';
+            }
         }
-        // Untuk menyembunyikan loader setelah halaman reload (non-AJAX):
-        // Tambahkan style untuk loader display: none; di CSS awal.
-        // Script ini hanya menampilkan saat submit. Setelah reload, CSS akan menyembunyikan lagi.
     </script>
 </body>
 

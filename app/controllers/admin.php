@@ -28,32 +28,48 @@ class admin extends Controller
 
 
     public function search()
-    {
-        $data['judul'] = 'Pencarian Data'; // Set judul untuk tampilan
+{
+    session_start(); // ⛔️ Penting! Pastikan session dimulai
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $nik = $_POST['nik'];
+    $data['judul'] = 'Pencarian Data';
 
-            if (empty($nik)) {
-                $data['error'] = 'NIK tidak boleh kosong!';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $nik = $_POST['nik'];
+
+        if (empty($nik)) {
+            $_SESSION['error'] = 'NIK tidak boleh kosong!';
+        } else {
+            $hasil_dari_model = $this->model('Data_model')->findByIdentifier($nik);
+
+            if ($hasil_dari_model) {
+                $_SESSION['hasil'] = $hasil_dari_model;
             } else {
-                // Panggil model untuk mencari data
-                $hasil_dari_model = $this->model('Data_model')->findByIdentifier($nik);
-
-                // Cek hasil dari model dan set data untuk view
-                if ($hasil_dari_model) {
-                    $data['hasil'] = $hasil_dari_model; // Data ditemukan, set variabel 'hasil' di array data
-                } else {
-                    $data['error'] = 'Data tidak ditemukan untuk NIK tersebut!'; // Data tidak ditemukan, set variabel 'error' di array data
-                }
+                $_SESSION['error'] = 'Data tidak ditemukan untuk NIK tersebut!';
             }
         }
 
-        // Tampilkan view. View akan memeriksa apakah $data['hasil'] atau $data['error'] ada.
-        $this->view('templates/navbar', $data);
-        $this->view('admin/search', $data); // Array $data berisi judul, mungkin hasil, mungkin error
-        $this->view('templates/footer');
+        // Redirect untuk mencegah form resubmission dan bersihkan data setelah refresh
+        header('Location: ' . BASEURL . '/admin/search');
+        exit;
     }
+
+    // Tarik data dari session jika ada
+    if (isset($_SESSION['hasil'])) {
+        $data['hasil'] = $_SESSION['hasil'];
+        unset($_SESSION['hasil']);
+    }
+
+    if (isset($_SESSION['error'])) {
+        $data['error'] = $_SESSION['error'];
+        unset($_SESSION['error']);
+    }
+
+    // Tampilkan tampilan
+    $this->view('templates/navbar', $data);
+    $this->view('admin/search', $data);
+    $this->view('templates/footer');
+}
+
 
 
 

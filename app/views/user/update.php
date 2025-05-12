@@ -1,11 +1,36 @@
+<?php
+// Ambil pesan dari data, default null jika tidak ada
+// Controller sekarang mengirim pesan dalam $data['message'] tapi mengambilnya dari $_SESSION['pesan']
+// Jadi kita tetap mengambil dari $data['message'] sesuai yang dikirim controller.
+$message = $data['message'] ?? null;
+
+// Variabel untuk menyimpan pesan string dan tipenya jika pesan valid
+$displayMessage = null;
+$messageType = 'info'; // Default type
+
+// Cek apakah pesan adalah array dan memiliki kunci 'isi'
+if (is_array($message) && isset($message['isi']) && !empty($message['isi'])) {
+  $displayMessage = $message['isi'];
+  $messageType = $message['tipe'] ?? 'info'; // Ambil tipe jika ada, default 'info'
+}
+// Jika $message adalah string (kasus lama atau kesalahan), bisa ditangani juga jika perlu
+else if (is_string($message) && !empty($message)) {
+  $displayMessage = $message;
+  $messageType = 'info'; // Default ke info untuk pesan string lama
+}
+
+?>
+
 <link rel="stylesheet" href="<?= BASEURL; ?>/css/update.css">
 
 <div class="container large">
-  <h2>Update Data User Posyandu</h2>
+  <h2>Update Data Pengguna Posyandu</h2>
 
-  <?php if (isset($data['message']) && $data['message']): ?>
-    <div class="alert alert-info"><?= $data['message']; ?></div>
-    <?php unset($data['message']); // Hapus pesan setelah ditampilkan ?>
+  <?php // Gunakan $displayMessage untuk mengecek dan menampilkan pesan ?>
+  <?php if ($displayMessage): ?>
+    <div class="alert alert-<?= htmlspecialchars($messageType); ?>">
+      <?= htmlspecialchars($displayMessage); // Tampilkan pesan string dan sanitasi ?>
+    </div>
   <?php endif; ?>
 
 

@@ -38,12 +38,12 @@ class Auth extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $inputData = [
-                'NIK'       => filter_input(INPUT_POST, 'NIK', FILTER_SANITIZE_STRING),
-                'nama'      => filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING),
-                'password'  => filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING),
-                'umur'      => filter_input(INPUT_POST, 'umur', FILTER_VALIDATE_INT),
-                'alamat'    => filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING),
-                'gender'    => filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_STRING)
+                'NIK' => filter_input(INPUT_POST, 'NIK', FILTER_SANITIZE_STRING),
+                'nama' => filter_input(INPUT_POST, 'nama', FILTER_SANITIZE_STRING),
+                'password' => filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING),
+                'umur' => filter_input(INPUT_POST, 'umur', FILTER_VALIDATE_INT),
+                'alamat' => filter_input(INPUT_POST, 'alamat', FILTER_SANITIZE_STRING),
+                'gender' => filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_STRING)
             ];
 
             $errors = [];
@@ -105,6 +105,11 @@ class Auth extends Controller
     // Fungsi untuk memproses login
     public function prosesLogin()
     {
+        // Pastikan session dimulai
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $identifier = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -120,22 +125,27 @@ class Auth extends Controller
 
             $userModel = $this->model('User_model');
 
-            // Panggil metode model yang sudah diperbaiki (misal: findByIdentifier)
+            // Langkah ini mengambil data user dari database berdasarkan identifier (NIK/Username)
             $user = $userModel->findByIdentifier($identifier);
 
             if ($user && password_verify($password, $user['Password'])) {
                 // Login Berhasil
+
+                // LANGKAH KUNCI: Menyimpan data user lengkap ke dalam session
                 $_SESSION['user'] = $user;
                 $_SESSION['role'] = $role;
+                // Opsional: Anda mungkin juga ingin menyimpan NIK secara terpisah jika sering digunakan
+                $_SESSION['nik'] = $user['NIK'];
 
                 // Redirect berdasarkan role ke RUTE yang BENAR
                 if ($role == 'admin') {
                     header('Location: ' . BASEURL . '/admin/index');
                 } else {
-                    header('Location: ' . BASEURL . '/user/profile');
+                    // Pastikan redirect ini mengarah ke halaman yang menampilkan profil user
+                    header('Location: ' . BASEURL . '/user/profile'); // Mengarah ke fungsi profile()
                 }
 
-                exit;
+                exit; // Penting untuk menghentikan eksekusi script setelah redirect
             } else {
                 // Login Gagal
                 $_SESSION['pesan'] = 'Username/NIK atau Password salah!';
@@ -144,6 +154,7 @@ class Auth extends Controller
                 exit;
             }
         } else {
+            // Jika bukan request POST, redirect kembali ke halaman login
             header('Location: ' . BASEURL . '/auth/login');
             exit;
         }

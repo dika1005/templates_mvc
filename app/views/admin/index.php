@@ -1,6 +1,6 @@
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="stylesheet" href="<?= BASEURL; ?>/css/navbrq.css">
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/navbar1.css">
   <title> Halaman <?= $data['judul']; ?></title>
 </head>
 

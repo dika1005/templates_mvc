@@ -6,9 +6,13 @@
     font-family: 'Poppins', sans-serif;
   }
   
-  body {
-    background: #f9fafb;
-  }
+ body {
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
   
   /* Container Styles */
   .container {

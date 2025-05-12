@@ -79,3 +79,80 @@ nav {
     padding: 12px;
   }
 }
+/* Hamburger icon (optional) */
+  .nav-toggle {
+    display: none;
+    font-size: 24px;
+    color: #333;
+  }
+  /* Kontainer Utama */
+.content-section {
+    padding: 60px 20px;
+    color: #333232;
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Membungkus isi */
+  .content-section .container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  /* Judul */
+  .content-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Paragraf */
+  .content-section p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #333232;
+  }
+  
+  /* Statistik Box */
+  .dashboard-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  
+  /* Box individual */
+  .stat-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px 25px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Icon di atas */
+  .stat-box i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #00d4ff;
+  }
+  
+  /* Judul dan teks */
+  .stat-box h3 {
+    margin: 10px 0 5px;
+    font-size: 1.4rem;
+    color: #333232;
+  }
+  
+  .stat-box p {
+    font-size: 1rem;
+    color: #333232;
+  }
+  

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin Data Management</title>
-<link rel="stylesheet" href="../../../public/css/admin.css">
+<link rel="stylesheet" href="<?= BASEURL; ?>/css/admin.css">
     <!-- Add Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Add Google Fonts -->

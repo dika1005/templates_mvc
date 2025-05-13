@@ -33,7 +33,7 @@ class User extends Controller
         // Load tampilan
         $this->view('templates/navbarUser', $data); // Navbar
         $this->view('user/index', $data);        // Tampilan utama user dengan data
-        $this->view('templates/footeradmin');           // Footer
+        $this->view('templates/footeruser');           // Footer
     }
 
     public function update()
@@ -140,7 +140,7 @@ class User extends Controller
             // Load tampilan
             $this->view('templates/navbarUser', $data);
             $this->view('user/update', $data); // Tampilan form update
-            $this->view('templates/footeradmin'); 
+            $this->view('templates/footeruser'); 
         }
     }
 
@@ -155,6 +155,6 @@ class User extends Controller
 
         $this->view('templates/navbarUser', $data);
         $this->view('user/jadwal', $data);
-        $this->view('templates/footeradmin'); 
+        $this->view('templates/footeruser'); 
     }
 }

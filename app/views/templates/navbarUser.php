@@ -22,6 +22,7 @@
                 <li><a href="admin.php"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="<?= BASEURL; ?>/user/update"><i class="fas fa-pen"></i> Update Data</a></li>
                 <li><a href="<?= BASEURL; ?>/user/jadwal"><i class="fas fa-list"></i> Jadwal</a></li>
+                <li><a href="../home/index.php"><i class="fas fa-logout"></i> kembali</a></li>
             </ul>
         </div>
     </nav>

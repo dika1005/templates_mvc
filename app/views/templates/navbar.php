@@ -24,6 +24,7 @@
         <li><a href="<?= BASEURL; ?>/admin/delete"><i class="fas fa-trash"></i> Delete Data</a></li>
         <li><a href="<?= BASEURL; ?>/admin/input"><i class="fas fa-pen"></i> Input Data</a></li>
         <li><a href="<?= BASEURL; ?>/admin/list"><i class="fas fa-list"></i> List Data</a></li>
+        <li><a href="../home/index.php"><i class="fas fa-logout"></i> kembali</a></li>
       </ul>
     </div>
   </nav>

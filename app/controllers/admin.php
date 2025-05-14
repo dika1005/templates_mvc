@@ -7,13 +7,14 @@ class admin extends Controller
         $data['judul'] = 'Home admin';
         $this->view('templates/navbar', $data);
         $this->view('admin/index');
-        // $this->view('templates/footer');
+        $this->view('templates/footeradmin');
     }
 public function delete()
 {
     $data['judul'] = 'Delete admin';
     $this->view('templates/navbar', $data);
     $this->view('admin/delete');
+    $this->view('templates/footeradmin');
 }
 
 public function deleteByNik()
@@ -47,7 +48,7 @@ public function deleteByNik()
 
         $this->view('templates/navbar', $data);
         $this->view('admin/list', $data); // <-- PENTING! kirim $data ke view!
-        // $this->view('templates/footer');
+        $this->view('templates/footeradmin');
     }
 
 
@@ -91,7 +92,7 @@ public function deleteByNik()
         // Tampilkan tampilan
         $this->view('templates/navbar', $data);
         $this->view('admin/search', $data);
-        // $this->view('templates/footer');
+        $this->view('templates/footeradmin');
     }
 
     public function input()
@@ -109,8 +110,9 @@ public function deleteByNik()
 
         $this->view('templates/navbar', $data);
         // Pass $data yang sekarang berisi judul dan list_data ke view
-        $this->view('admin/input', $data); // View ini juga perlu membaca $_SESSION['pesan']
-        // $this->view('templates/footer'); // Jika perlu footer
+        $this->view('admin/input', $data);
+         // View ini juga perlu membaca $_SESSION['pesan']
+        $this->view('templates/footeradmin');
     }
 
     // Method ini untuk MEMPROSES DATA DARI FORM INPUT (menangani request POST dari form di view input)

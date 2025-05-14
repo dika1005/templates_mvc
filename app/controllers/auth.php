@@ -4,6 +4,11 @@ class Auth extends Controller
 {
     public function index()
     {
+        // Tambahkan ini
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $data['judul'] = 'Login';
 
         if (isset($_SESSION['pesan'])) {
@@ -19,9 +24,13 @@ class Auth extends Controller
         $this->view('auth/login', $data);
     }
 
-    // Fungsi untuk proses registrasi
     public function register()
     {
+        // Tambahkan ini juga
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $data['judul'] = 'Register';
         $data['form_data'] = $_SESSION['form_data'] ?? [];
         unset($_SESSION['form_data']);
@@ -32,6 +41,7 @@ class Auth extends Controller
 
         $this->view('auth/register', $data);
     }
+
 
     // Fungsi untuk memproses registrasi
     public function prosesRegistrasi()
@@ -105,6 +115,7 @@ class Auth extends Controller
     // Fungsi untuk memproses login
     public function prosesLogin()
     {
+
         // Pastikan session dimulai
         if (session_status() == PHP_SESSION_NONE) {
             session_start();

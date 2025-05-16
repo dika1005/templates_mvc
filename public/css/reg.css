@@ -32,16 +32,49 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(
+      rgba(82, 200, 255, 0.77),
+      rgba(62, 184, 237, 0.55)
+    ),
+    url("../img/pos.png"); /* Sama kayak login */
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
   max-width: 800px;
   width: 100%;
-  background: #fff;
+  background: linear-gradient(
+    135deg,
+    rgba(159, 179, 223, 0.55),
+    rgba(139, 183, 255, 0.36)
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
   padding: 25px 30px;
   border-radius: 7px;
+
   box-shadow: 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgb(119, 191, 255);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: rgb(10, 149, 255);
 }
 
 .container .title {
@@ -160,11 +193,15 @@ form .button input {
   letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  background: linear-gradient(45deg, #007bff, #00bfff);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 form .button input:hover {
-  background: linear-gradient(135deg, #9b59b6, #71b7e6);
+  background: linear-gradient(45deg, #0056b3, #0098cc);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 584px) {

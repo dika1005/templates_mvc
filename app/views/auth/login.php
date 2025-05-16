@@ -8,19 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Halaman <?= $data['judul']; ?></title>
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/login.css">
-    <style>
-        .error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        .success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-    </style>
 </head>
 
 <body>

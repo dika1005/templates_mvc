@@ -51,6 +51,25 @@ body {
   transition: transform 0.3s ease;
 }
 
+.back-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color:rgb(119, 191, 255);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color:rgb(10, 149, 255);
+}
+
 /* Rest of your existing styles remain the same */
 .login-container:hover {
   transform: translateY(-5px);

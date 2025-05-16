@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <a href="<?= BASEURL; ?>/home" class="back-button">← Kembali ke Home</a>
     <div class="container-wrapper">
         <div class="image-container">
         </div>

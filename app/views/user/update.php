@@ -22,6 +22,7 @@ else if (is_string($message) && !empty($message)) {
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL; ?>/css/update.css">
+<div class="container">
 
 <div class="container large">
   <h2>Update Data Pengguna Posyandu</h2>
@@ -79,5 +80,6 @@ else if (is_string($message) && !empty($message)) {
     <div class="form-group">
       <button type="submit">Selesai</button>
     </div>
+  </div>
   </form>
 </div>

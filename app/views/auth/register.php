@@ -12,7 +12,7 @@
 
 <body>
 
-  <a href="<?= BASEURL; ?>/home" class="back-button">← Kembali ke Home</a>
+  <a href="<?= BASEURL; ?>/auth/login" class="back-button">← Kembali ke Login</a>
   <div class="container">
     <div class="title"><?= $data['judul'] ?? 'Register'; ?></div>
 

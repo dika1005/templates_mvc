@@ -1,105 +1,135 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f8ff;
-    margin: 0;
-    padding: 40px 20px;
-    animation: fadeInBody 0.8s ease;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom right, #cceeff, #b3e0ff);
+  color: #333;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: #e6f7ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #003366;
+  font-weight: bold;
+}
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fadeInBody {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes fadeInBody {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  to {
+    opacity: 1;
   }
-  
-  .container.large {
-    max-width: 1000px;
-    margin: auto;
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 120, 255, 0.1);
-    border: 1px solid #cce0ff;
-    animation: fadeInUp 0.9s ease;
+}
+
+
+.container.large {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 120, 255, 0.1);
+  border: 1px solid #cce0ff;
+  animation: fadeInUp 0.9s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  h2 {
-    text-align: center;
-    color: #007acc;
-    margin-bottom: 30px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 6px;
-    color: #004080;
-    font-size: 15px;
-  }
-  
-  input[type="text"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 15px;
-    border: 1px solid #99ccff;
-    border-radius: 6px;
-    background-color: #f8fbff;
-    transition: border-color 0.3s ease;
-  }
-  
-  input:focus {
-    border-color: #007acc;
-    outline: none;
-  }
-  
+}
+
+h2 {
+  text-align: center;
+  color: #007acc;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #004080;
+  font-size: 15px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #99ccff;
+  border-radius: 6px;
+  background-color: #f8fbff;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007acc;
+  outline: none;
+}
+
+.radio-group {
+  display: flex;
+  gap: 30px;
+  margin-top: 6px;
+  padding-left: 5px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 8px;
+  accent-color: #007acc;
+}
+
+button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007acc;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 15px;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: scale(1.02);
+}
+
+@media (max-width: 480px) {
   .radio-group {
-    display: flex;
-    gap: 30px;
-    margin-top: 6px;
-    padding-left: 5px;
+    flex-direction: column;
   }
-  
-  .radio-group label {
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    color: #333;
-  }
-  
-  .radio-group input[type="radio"] {
-    margin-right: 8px;
-    accent-color: #007acc;
-  }
-  
-  button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 6px;
-    background-color: #007acc;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 15px;
-  }
-  
-  button:hover {
-    background-color: #005fa3;
-    transform: scale(1.02);
-  }
-  
-  @media (max-width: 480px) {
-    .radio-group {
-      flex-direction: column;
-    }
-  }
-  
+}

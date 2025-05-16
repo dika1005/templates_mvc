@@ -157,4 +157,21 @@ class User extends Controller
         $this->view('user/jadwal', $data);
         $this->view('templates/footeruser');
     }
+
+    public function dokumentasi()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $data['judul'] = 'Dokumentasi Posyandu';
+
+        // Ambil data dari model, HARUS PASTI ADA
+        $data['dokumentasi'] = $this->model('Dokumentasi_model')->getAllDokumentasi();
+
+        // Jangan lupa kirim $data ke semua view yang butuh
+        $this->view('templates/navbarUser', $data);
+        $this->view('user/dokumentasi', $data);  // <-- PENTING!
+        $this->view('templates/footeruser');
+    }
 }

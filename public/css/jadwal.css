@@ -1,12 +1,27 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f0f8ff;
   margin: 0;
-  padding: 2rem;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom right, #cceeff, #b3e0ff);
+  text-align: center;
+  color: #333;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: #e6f7ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-items: center;
 }
 
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #003366;
+  font-weight: bold;
+}
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: auto;
   background: white;
   padding: 2rem;
@@ -14,7 +29,8 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-h2, h3 {
+h2,
+h3 {
   text-align: center;
   color: #0077cc;
 }
@@ -88,8 +104,14 @@ h2, h3 {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .back-btn {

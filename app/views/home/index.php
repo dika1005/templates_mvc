@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<?= BASEURL; ?>/css/home.css">
-<script src=" <?= BASEURL;?>/js/scroll.js"></script>
+<script src=" <?= BASEURL; ?>/js/scroll.js"></script>
 
 
 <section id="hero" class="hero">
@@ -47,7 +47,7 @@
       <div class="card-wrapper">
         <!-- Card 1 -->
         <div class="card">
-          <img src="img/posyanduA.jpg" alt="posyanduA" />
+          <img src="<?= BASEURL; ?>/img/posyanduA.jpg" alt="posyanduA" />
           <div class="card-content">
             <h3><a href="#">Posyandu</a></h3>
             <p>
@@ -59,7 +59,7 @@
 
         <!-- Card 2 -->
         <div class="card">
-          <img src="img/ibu_hamil.webp" alt="ibu hamil" />
+          <img src="<?= BASEURL; ?>/img/ibu_hamil.webp" alt="ibu hamil" />
           <div class="card-content">
             <h3><a href="#">Panduan Ibu Hamil</a></h3>
             <p>
@@ -71,7 +71,7 @@
 
         <!-- Card 3 -->
         <div class="card">
-          <img src="img/balita.jpg" alt="balita" />
+          <img src="<?= BASEURL; ?>/img/balita.jpg" alt="balita" />
           <div class="card-content">
             <h3><a href="#">Gizi Balita</a></h3>
             <p>

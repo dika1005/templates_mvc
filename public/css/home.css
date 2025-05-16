@@ -30,9 +30,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: transparent; /* Awalnya transparan */
+    background-color: transparent; 
     color: rgb(117, 159, 252);
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: space-between;
@@ -97,7 +97,7 @@ body {
 /* HERO */
 .hero {
   height: 90vh;
-  padding: 18% 0;
+  padding: 21% 0;
   background: linear-gradient(
       rgba(82, 200, 255, 0.77),
       rgba(44, 163, 213, 0.55)
@@ -137,14 +137,14 @@ body {
 
 .hero .ps {
   font-size: 2em;
-  margin-top: -5%;
+  margin-top: -3%;
 }
 
 .hero img {
   max-width: 30%;
   height: auto;
   margin-left: 60%;
-  margin-top: -20%;
+  margin-top: -17%;
 }
 
 .hidden {

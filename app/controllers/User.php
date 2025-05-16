@@ -140,11 +140,11 @@ class User extends Controller
             // Load tampilan
             $this->view('templates/navbarUser', $data);
             $this->view('user/update', $data); // Tampilan form update
-            $this->view('templates/footeruser'); 
+            $this->view('templates/footeruser');
         }
     }
 
- 
+
     public function jadwal()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -155,6 +155,6 @@ class User extends Controller
 
         $this->view('templates/navbarUser', $data);
         $this->view('user/jadwal', $data);
-        $this->view('templates/footeruser'); 
+        $this->view('templates/footeruser');
     }
 }

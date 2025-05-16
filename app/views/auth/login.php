@@ -28,7 +28,7 @@
         <div class="image-container">
         </div>
         <div class="login-container">
-            <h2>Login</h2>
+            <h2>Login Dulu Yuk</h2>
 
             <?php
             if (!empty($data['message'])) {

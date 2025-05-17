@@ -1,14 +1,16 @@
 <?php
-// Dummy data dokumentasi (tidak diubah)
+// Dummy data dokumentasi (anggap ini hasil dari database)
+// Data ini mempertahankan urutan item
 $dokumentasi = [
     ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://images-cdn.ubuy.co.id/6359be177f967966245ad033-peaky-blinders-poster-tommy-smoking.jpg'], // Portrait 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://images-cdn.ubuy.co.id/6359be177f967966245ad033-peaky-blinders-poster-tommy-smoking.jpg'], // Portrait 2
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 2
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy24ge3E=/0x0:0x0/750x1000/data/photo/buku/contoh-potrait.jpg'], // Portrait 3 (Contoh lebih tinggi)
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 3
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://images-cdn.ubuy.co.id/6359be177f967966245ad033-peaky-blinders-poster-tommy-smoking.jpg'], // Portrait 4
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 4
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
+
 ];
 ?>
 
@@ -16,7 +18,7 @@ $dokumentasi = [
 <html>
 
 <head>
-    <title>Galeri Dokumentasi Masonry</title>
+    <title>Galeri Dokumentasi</title>
     <style>
         body {
             margin: 0;
@@ -31,53 +33,32 @@ $dokumentasi = [
         }
 
         .galeri-container {
-            /* Hapus properti Grid */
+            /* Menggunakan Grid untuk tata letak dengan urutan asli */
+            display: grid;
+            /* Kolom responsif: minimal 250px, maksimal 1fr (mengisi ruang tersedia) */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* Jarak antar item grid (kolom dan baris) */
+            gap: 6px;
             padding: 10px;
-            position: relative;
-            /* Penting untuk Masonry */
+            /* Pusatkan item dalam kolom */
+            justify-items: center;
+            /* Penting: Sejajarkan item di bagian atas cell grid mereka */
+            /* Ini mencegah item yang lebih pendek meregang, membuat gap terlihat di dalam cell */
+            align-items: start;
             margin: auto;
             max-width: 1200px;
-            /* Batasi lebar maksimum */
-            /* Ini adalah kontainer utama untuk Masonry. */
-            /* Pastikan tidak ada float atau posisi absolut/fixed dari elemen INDUKNYA yang mengganggu lebarnya */
-            /* border: 1px solid red; /* Garis bantu - aktifkan untuk lihat batasnya */
         }
 
         .galeri-item {
-            /* Tentukan lebar item menggunakan persentase */
-            width: calc(33.33% - 6px);
-            /* Contoh 3 kolom, kurangi gutter */
-            margin-bottom: 6px;
-            /* Gap vertikal */
-            float: left;
-            /* Diperlukan oleh Masonry untuk perhitungan awal */
             text-align: center;
-            box-sizing: border-box;
-            /* Pastikan padding/border masuk hitungan width */
-            /* border: 1px solid blue; /* Garis bantu */
+            /* Item akan mengisi ruang grid cell secara otomatis */
         }
-
-        /* Media Queries untuk Responsivitas Lebar Item */
-        @media (max-width: 992px) {
-            .galeri-item {
-                width: calc(50% - 6px);
-                /* 2 kolom */
-            }
-        }
-
-        @media (max-width: 600px) {
-            .galeri-item {
-                width: calc(100% - 6px);
-                /* 1 kolom */
-            }
-        }
-
 
         .galeri-item img {
             display: block;
             max-width: 100%;
             height: auto;
-            /* Penting */
+            /* Penting: Biarkan tinggi gambar menyesuaikan rasio aspek */
             object-fit: cover;
             cursor: pointer;
             border-radius: 8px;
@@ -85,10 +66,14 @@ $dokumentasi = [
             transition: transform 0.2s ease;
         }
 
-        /* Kelas portrait/landscape (opsional) */
-        .galeri-item img.portrait {}
+        /* Kelas portrait/landscape (untuk styling lain jika perlu) */
+        .galeri-item img.portrait {
+            /* Tidak perlu set dimensi di sini jika height: auto sudah digunakan */
+        }
 
-        .galeri-item img.landscape {}
+        .galeri-item img.landscape {
+            /* Tidak perlu set dimensi di sini */
+        }
 
         .galeri-item img:hover {
             transform: scale(1.03);
@@ -180,15 +165,12 @@ $dokumentasi = [
         <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
     </div>
 
-    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.galeri-item img');
-            const grid = document.querySelector('.galeri-container');
 
-            // --- Bagian Mendeteksi Orientasi (Opsional) ---
+            // --- Bagian untuk Mendeteksi Orientasi Gambar (Opsional) ---
+            // Berguna jika Anda ingin menargetkan gambar portrait/landscape dengan CSS tambahan.
             images.forEach(img => {
                 if (img.complete) {
                     checkOrientationAndAddClass(img);
@@ -197,15 +179,13 @@ $dokumentasi = [
                 }
                 img.addEventListener('error', () => {
                     console.error('Gagal memuat gambar:', img.src);
-                    if (masonry) {
-                        masonry.layout();
-                    } // Tata ulang jika item disembunyikan/gagal
                 });
             });
 
             function checkOrientationAndAddClass(img) {
                 const naturalWidth = img.naturalWidth;
                 const naturalHeight = img.naturalHeight;
+
                 if (naturalHeight > naturalWidth + 1) {
                     img.classList.add('portrait');
                 } else {
@@ -214,25 +194,9 @@ $dokumentasi = [
             }
             // --- Akhir Deteksi Orientasi ---
 
-            // --- Inisialisasi Masonry ---
-            let masonry;
-            imagesLoaded(grid, function() {
-                masonry = new Masonry(grid, {
-                    itemSelector: '.galeri-item',
-                    // Set columnWidth ke string persentase yang sesuai dengan lebar item
-                    // Ini harus sesuai dengan lebar yang Anda tentukan di CSS untuk .galeri-item
-                    columnWidth: '.galeri-item', // Menggunakan item pertama untuk menentukan lebar kolom.
-                    // Atau bisa coba string persentase: '33.33%' jika item width kalkulasi lain
-                    gutter: 6, // Jarak horizontal antar kolom (pixel)
-                    percentPosition: true // Gunakan persentase untuk penempatan
-                });
-                console.log('Masonry initialized');
-            });
-            // --- Akhir Inisialisasi Masonry ---
-
         });
 
-        // --- Fungsi Modal (Tetap sama) ---
+        // --- Fungsi Modal ---
         function openModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -242,8 +206,14 @@ $dokumentasi = [
         }
 
         function closeModal(event) {
-            if (event && event.target && event.target.id === 'modalImage') return;
-            if (event && event.target && event.target.classList.contains('close')) {} else if (event && event.target !== document.getElementById('imageModal')) return;
+            if (event && event.target && event.target.id === 'modalImage') {
+                return;
+            }
+            if (event && event.target && event.target.classList.contains('close')) {
+                // Lanjutkan
+            } else if (event && event.target !== document.getElementById('imageModal')) {
+                return;
+            }
 
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -251,11 +221,19 @@ $dokumentasi = [
             modalImage.src = '';
             document.body.classList.remove('modal-open');
         }
+
         document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") closeModal();
+            if (event.key === "Escape") {
+                closeModal();
+            }
         });
+
         const style = document.createElement('style');
-        style.innerHTML = `.modal-open { overflow: hidden; }`;
+        style.innerHTML = `
+            .modal-open {
+                overflow: hidden;
+            }
+        `;
         document.head.appendChild(style);
     </script>
 

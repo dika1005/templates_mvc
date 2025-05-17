@@ -23,7 +23,11 @@
                 <li><a href="<?= BASEURL; ?>/user/update"><i class="fas fa-pen"></i> Update Data</a></li>
                 <li><a href="<?= BASEURL; ?>/user/jadwal"><i class="fas fa-list"></i> Jadwal</a></li>
                 <li><a href="<?= BASEURL; ?>/user/dokumentasi"><i class="fas fa-book"></i> Dokumentasi</a></li>
-                <li><a href="../home/index.php"><i class="fas fa-logout"></i> kembali</a></li>
+                <li>
+                    <a href="<?= BASEURL; ?>/logout" title="Keluar">
+                        <i class="fas fa-sign-out-alt"></i> Keluar
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

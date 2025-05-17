@@ -10,23 +10,19 @@ class Dokumentasi_model
         $this->db = new Database;
     }
 
-    // Ambil semua dokumentasi
     public function getAllDokumentasi()
     {
         $query = "SELECT * FROM dokumentasi";
-        $result = $this->db->query($query);
-
-        if ($result) {
-            // Misal fetchAll mengembalikan array kosong kalau tidak ada data
-            return $result->fetchAll(PDO::FETCH_ASSOC);
-        }
-
-        return []; // pastikan mengembalikan array kosong, bukan null
+        $this->db->query($query); // prepare aja
+        return $this->db->resultSet(); // execute dan fetchAll
     }
 
 
 
-    // Ambil gambar berdasarkan ID (untuk ditampilkan)
+
+
+
+
     public function getGambarById($id)
     {
         $this->db->query("SELECT gambar, tipe_gambar FROM " . $this->table . " WHERE id = :id");
@@ -34,35 +30,16 @@ class Dokumentasi_model
         return $this->db->single();
     }
 
-    // Simpan gambar ke database (upload)
-//     public function uploadGambar($judul, $file)
-//     {
-//         try {
-//             $gambar = file_get_contents($file['tmp_name']);
-//             $tipe_gambar = $file['type'];
+    public function simpan($data)
+    {
+        $query = "INSERT INTO dokumentasi (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)";
+        $this->db->query($query);
+        $this->db->bind('judul', $data['judul']);
+        $this->db->bind('gambar', $data['gambar'], PDO::PARAM_LOB);
+        $this->db->bind('tipe_gambar', $data['tipe_gambar']);
+        return $this->db->execute();
+    }
 
-//             $this->db->query("INSERT INTO " . $this->table . " (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)");
-//             $this->db->bind('judul', $judul);
-//             $this->db->bind('gambar', $gambar, PDO::PARAM_LOB);
-//             $this->db->bind('tipe_gambar', $tipe_gambar);
-//             return $this->db->execute();
-//         } catch (PDOException $e) {
-//     die("🔥 ERROR PDO: " . $e->getMessage());
-// }
-
-//     }
-
-public function simpan($data)
-{
-    $query = "INSERT INTO dokumentasi (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)";
-    $this->db->query($query);
-    $this->db->bind('judul', $data['judul']);
-    $this->db->bind('gambar', $data['gambar'], PDO::PARAM_LOB);
-    $this->db->bind('tipe_gambar', $data['tipe_gambar']);
-    return $this->db->execute(); // Harus ada return true/false
-}
-
-    // Hapus gambar berdasarkan ID
     public function deleteGambar($id)
     {
         $this->db->query("DELETE FROM " . $this->table . " WHERE id = :id");

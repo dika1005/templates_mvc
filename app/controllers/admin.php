@@ -54,7 +54,7 @@ class admin extends Controller
 
     public function search()
     {
-        session_start(); // ⛔️ Penting! Pastikan session dimulai
+        session_start(); // Pastikan session start sekali aja di controller
 
         $data['judul'] = 'Pencarian Data';
 
@@ -63,22 +63,25 @@ class admin extends Controller
 
             if (empty($nik)) {
                 $_SESSION['error'] = 'NIK tidak boleh kosong!';
+                unset($_SESSION['hasil']); // hapus hasil lama supaya gak muncul
             } else {
                 $hasil_dari_model = $this->model('Data_model')->findByIdentifier($nik);
 
                 if ($hasil_dari_model) {
                     $_SESSION['hasil'] = $hasil_dari_model;
+                    unset($_SESSION['error']); // hapus error lama supaya gak muncul
                 } else {
                     $_SESSION['error'] = 'Data tidak ditemukan untuk NIK tersebut!';
+                    unset($_SESSION['hasil']);
                 }
             }
 
-            // Redirect untuk mencegah form resubmission dan bersihkan data setelah refresh
+            // Redirect supaya data session bisa diproses ulang dan mencegah resubmission
             header('Location: ' . BASEURL . '/admin/search');
             exit;
         }
 
-        // Tarik data dari session jika ada
+        // Tarik data dari session ke variabel $data, lalu hapus session-nya
         if (isset($_SESSION['hasil'])) {
             $data['hasil'] = $_SESSION['hasil'];
             unset($_SESSION['hasil']);
@@ -88,14 +91,19 @@ class admin extends Controller
             $data['error'] = $_SESSION['error'];
             unset($_SESSION['error']);
         }
+
+        // Statistik seperti biasa
         $data['balita'] = $this->model('Data_model')->countBalita();
         $data['ibuHamil'] = $this->model('Data_model')->countIbuHamil();
         $data['lansia'] = $this->model('Data_model')->countLansia();
-        // Tampilkan tampilan
+        
+
+        // Render view dengan data lengkap
         $this->view('templates/navbar', $data);
         $this->view('admin/search', $data);
         $this->view('templates/footeradmin');
     }
+
 
     public function input()
     {
@@ -183,35 +191,35 @@ class admin extends Controller
             exit;
         }
     }
-// public function upload()
-// {
-//     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
-//         $judul = $_POST["judul"];
-//         $file = $_FILES["media"];
+    // public function upload()
+    // {
+    //     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
+    //         $judul = $_POST["judul"];
+    //         $file = $_FILES["media"];
 
-//         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/webm', 'video/ogg'];
-//         $maxSize = 10 * 1024 * 1024; // 10MB
+    //         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/webm', 'video/ogg'];
+    //         $maxSize = 10 * 1024 * 1024; // 10MB
 
-//         if (!in_array($file['type'], $allowedTypes)) {
-//             echo "<script>alert('Jenis file tidak didukung 😢 Hanya gambar dan video ya!');</script>";
-//         } elseif ($file['size'] > $maxSize) {
-//             echo "<script>alert('Ukuran file terlalu besar 😱 Maksimal 10MB!');</script>";
-//         } else {
-//             if ($this->model('Dokumentasi_model')->uploadGambar($judul, $file)) {
-//                 header("Location: " . BASEURL . "/user/dokumentasi");
-//                 exit();
-//             } else {
-//                 echo "<script>alert('Gagal menyimpan ke database 😭');</script>";
-//             }
-//         }
-//     }
+    //         if (!in_array($file['type'], $allowedTypes)) {
+    //             echo "<script>alert('Jenis file tidak didukung 😢 Hanya gambar dan video ya!');</script>";
+    //         } elseif ($file['size'] > $maxSize) {
+    //             echo "<script>alert('Ukuran file terlalu besar 😱 Maksimal 10MB!');</script>";
+    //         } else {
+    //             if ($this->model('Dokumentasi_model')->uploadGambar($judul, $file)) {
+    //                 header("Location: " . BASEURL . "/user/dokumentasi");
+    //                 exit();
+    //             } else {
+    //                 echo "<script>alert('Gagal menyimpan ke database 😭');</script>";
+    //             }
+    //         }
+    //     }
 
-//     $data['judul'] = 'Upload Dokumentasi';
-//     $this->view('templates/navbar', $data);
-//     $this->view('admin/upload', $data);
-//     $this->view('templates/footeradmin');
-// }
-public function upload()
+    //     $data['judul'] = 'Upload Dokumentasi';
+    //     $this->view('templates/navbar', $data);
+    //     $this->view('admin/upload', $data);
+    //     $this->view('templates/footeradmin');
+    // }
+    public function upload()
     {
         $data['judul'] = 'Upload Dokumentasi';
         $this->view('templates/navbar', $data);
@@ -248,7 +256,6 @@ public function upload()
             // Kirim status ke view
             $data['berhasil'] = true;
             $this->view('admin/upload', $data);
-
         }
     }
 
@@ -301,8 +308,4 @@ public function upload()
         // Output PDF ke browser
         $pdf->Output('I', 'Laporan_Data_Posyandu.pdf');
     }
-
-
-
-
 }

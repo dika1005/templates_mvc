@@ -63,24 +63,32 @@ class Data_model
 
     // 📊 Hitung Balita (0–5 tahun)
     public function countBalita()
-{
-    $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 0 AND 5";
-    $this->db->query($query);
-    return $this->db->single()['total'];
-}
+    {
+        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 0 AND 5";
+        $this->db->query($query);
+        return $this->db->single()['total'];
+    }
 
-public function countIbuHamil()
-{
-    $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 23 AND 40";
-    $this->db->query($query);
-    return $this->db->single()['total'];
-}
+    public function countIbuHamil()
+    {
+        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 23 AND 40";
+        $this->db->query($query);
+        return $this->db->single()['total'];
+    }
 
-public function countLansia()
-{
-    $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 50 AND 70";
-    $this->db->query($query);
-    return $this->db->single()['total'];
-}
+    public function countLansia()
+    {
+        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 50 AND 70";
+        $this->db->query($query);
+        return $this->db->single()['total'];
+    }
 
+    public function testCount()
+    {
+        return [
+            'balita' => $this->countBalita(),
+            'ibuHamil' => $this->countIbuHamil(),
+            'lansia' => $this->countLansia()
+        ];
+    }
 }

@@ -1,85 +1,105 @@
 /* BODY - Panggung utama */
 /* Untuk menjamin kontainer benar-benar di tengah halaman */
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+      135deg,
+      rgba(52, 152, 219, 0.3),
+      rgba(41, 128, 185, 0.3)
+    ),
+    url("nama-gambar.jpg");
 
-    font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 20px;
-    }
-    h1, h3 {
-      text-align: center;
-      color: #444;
-    }
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+}
+h1,
+h3 {
+  text-align: center;
+  color: #444;
+}
 
-    /* Input group */
-    .input-group {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .input-group input {
-      padding: 10px;
-      flex: 1;
-      font-size: 16px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-    }
-    .btn-klee {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+/* Input group */
+.input-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.input-group input {
+  padding: 10px;
+  flex: 1;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+.btn-klee {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(
+      135deg,
+      rgba(52, 152, 219, 0.3),
+      rgba(41, 128, 185, 0.3)
+    ),
+    url("nama-gambar.jpg");
 
-      color: white;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .btn-klee:hover {
-        background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn-klee:hover {
+  background: linear-gradient(
+      135deg,
+      rgba(52, 152, 219, 0.3),
+      rgba(41, 128, 185, 0.3)
+    ),
+    url("nama-gambar.jpg");
+}
 
-    }
+/* Tabel */
+#dataTable {
+  display: block; /* atau hilangkan baris ini supaya default tampil */
+  margin-top: 20px;
+  overflow-x: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background: white;
+  padding: 20px;
+}
 
-    /* Tabel */
-    #dataTable {
-      display: none;
-      margin-top: 20px;
-      overflow-x: auto;
-      border-radius: 15px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      background: white;
-      padding: 20px;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+table thead {
+  background: linear-gradient(
+      135deg,
+      rgba(52, 152, 219, 0.3),
+      rgba(41, 128, 185, 0.3)
+    ),
+    url("nama-gambar.jpg");
+}
+table th,
+table td {
+  padding: 12px;
+  border: 1px solid #eee;
+  text-align: left;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 16px;
-    }
-    table thead {
-        background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
-
-    }
-    table th, table td {
-      padding: 12px;
-      border: 1px solid #eee;
-      text-align: left;
-    }
-
-    canvas {
-      display: block;
-      margin: 30px auto;
-      max-width: 100%;
-    }
-    canvas#statsChart {
+canvas {
+  display: block;
+  margin: 30px auto;
+  max-width: 100%;
+}
+canvas#statsChart {
   width: 100%;
   max-width: 600px;
   height: auto;

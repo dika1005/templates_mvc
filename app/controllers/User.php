@@ -122,10 +122,7 @@ class User extends Controller
 
         $data['judul'] = 'Dokumentasi Posyandu';
 
-        // Memanggil model Dokumentasi_model
         $dokumentasiModel = $this->model('Dokumentasi_model');
-
-        // Mengambil semua data dokumentasi
         $data['dokumentasi'] = $dokumentasiModel->getAllDokumentasi();
 
         $this->view('templates/navbarUser', $data);
@@ -133,7 +130,8 @@ class User extends Controller
         $this->view('templates/footeruser');
     }
 
-    // Mendapatkan gambar dari database (untuk ditampilkan)
+
+
     public function getGambar($id)
     {
         $dokumentasiModel = $this->model('Dokumentasi_model');
@@ -148,7 +146,6 @@ class User extends Controller
         }
     }
 
-    // Mengunggah gambar baru (halaman form dan proses upload)
     public function uploadDokumentasi()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['gambar'])) {
@@ -173,7 +170,6 @@ class User extends Controller
         $this->view('templates/footeruser');
     }
 
-    // Menghapus gambar berdasarkan ID
     public function deleteDokumentasi($id)
     {
         $dokumentasiModel = $this->model('Dokumentasi_model');

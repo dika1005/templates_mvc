@@ -29,6 +29,7 @@ class Database
     public function query($query)
     {
         $this->stmt = $this->dbh->prepare($query);
+        return $this->stmt; // ← INI NIH YANG HILANG!!
     }
 
     public function bind($param, $value, $type = null)

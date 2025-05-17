@@ -1,16 +1,13 @@
 <?php
-// Dummy data dokumentasi (anggap ini hasil dari database)
-// Data ini mempertahankan urutan item
 $dokumentasi = [
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'], // Landscape 1
-
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
+    ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
 ];
 ?>
 
@@ -33,17 +30,11 @@ $dokumentasi = [
         }
 
         .galeri-container {
-            /* Menggunakan Grid untuk tata letak dengan urutan asli */
             display: grid;
-            /* Kolom responsif: minimal 250px, maksimal 1fr (mengisi ruang tersedia) */
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            /* Jarak antar item grid (kolom dan baris) */
-            gap: 6px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
             padding: 10px;
-            /* Pusatkan item dalam kolom */
             justify-items: center;
-            /* Penting: Sejajarkan item di bagian atas cell grid mereka */
-            /* Ini mencegah item yang lebih pendek meregang, membuat gap terlihat di dalam cell */
             align-items: start;
             margin: auto;
             max-width: 1200px;
@@ -51,14 +42,12 @@ $dokumentasi = [
 
         .galeri-item {
             text-align: center;
-            /* Item akan mengisi ruang grid cell secara otomatis */
         }
 
         .galeri-item img {
             display: block;
             max-width: 100%;
             height: auto;
-            /* Penting: Biarkan tinggi gambar menyesuaikan rasio aspek */
             object-fit: cover;
             cursor: pointer;
             border-radius: 8px;
@@ -66,14 +55,9 @@ $dokumentasi = [
             transition: transform 0.2s ease;
         }
 
-        /* Kelas portrait/landscape (untuk styling lain jika perlu) */
-        .galeri-item img.portrait {
-            /* Tidak perlu set dimensi di sini jika height: auto sudah digunakan */
-        }
+        .galeri-item img.portrait {}
 
-        .galeri-item img.landscape {
-            /* Tidak perlu set dimensi di sini */
-        }
+        .galeri-item img.landscape {}
 
         .galeri-item img:hover {
             transform: scale(1.03);
@@ -86,7 +70,6 @@ $dokumentasi = [
             color: #333;
         }
 
-        /* Styling untuk Modal */
         .modal {
             display: none;
             position: fixed;
@@ -168,9 +151,6 @@ $dokumentasi = [
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.galeri-item img');
-
-            // --- Bagian untuk Mendeteksi Orientasi Gambar (Opsional) ---
-            // Berguna jika Anda ingin menargetkan gambar portrait/landscape dengan CSS tambahan.
             images.forEach(img => {
                 if (img.complete) {
                     checkOrientationAndAddClass(img);
@@ -192,11 +172,8 @@ $dokumentasi = [
                     img.classList.add('landscape');
                 }
             }
-            // --- Akhir Deteksi Orientasi ---
-
         });
 
-        // --- Fungsi Modal ---
         function openModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
@@ -209,9 +186,7 @@ $dokumentasi = [
             if (event && event.target && event.target.id === 'modalImage') {
                 return;
             }
-            if (event && event.target && event.target.classList.contains('close')) {
-                // Lanjutkan
-            } else if (event && event.target !== document.getElementById('imageModal')) {
+            if (event && event.target && event.target.classList.contains('close')) {} else if (event && event.target !== document.getElementById('imageModal')) {
                 return;
             }
 

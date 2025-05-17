@@ -9,34 +9,34 @@ class admin extends Controller
         $this->view('admin/index');
         $this->view('templates/footeradmin');
     }
-public function delete()
-{
-    $data['judul'] = 'Delete admin';
-    $this->view('templates/navbar', $data);
-    $this->view('admin/delete');
-    $this->view('templates/footeradmin');
-}
+    public function delete()
+    {
+        $data['judul'] = 'Delete admin';
+        $this->view('templates/navbar', $data);
+        $this->view('admin/delete');
+        $this->view('templates/footeradmin');
+    }
 
-public function deleteByNik()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nik = $_POST['nik'];
+    public function deleteByNik()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nik = $_POST['nik'];
 
-        // Memastikan model Admin_model di-load dengan benar
-        $adminModel = $this->model('Data_model'); // Memanggil model Admin_model
+            // Memastikan model Admin_model di-load dengan benar
+            $adminModel = $this->model('Data_model'); // Memanggil model Admin_model
 
-        // Panggil fungsi hapusDataByNik
-        if ($adminModel->hapusDataByNik($nik)) {
-            // Redirect jika berhasil
-            header('Location: ' . BASEURL . '/admin/delete?success=1');
-            exit;
-        } else {
-            // Redirect jika gagal
-            header('Location: ' . BASEURL . '/admin/delete?error=1');
-            exit;
+            // Panggil fungsi hapusDataByNik
+            if ($adminModel->hapusDataByNik($nik)) {
+                // Redirect jika berhasil
+                header('Location: ' . BASEURL . '/admin/delete?success=1');
+                exit;
+            } else {
+                // Redirect jika gagal
+                header('Location: ' . BASEURL . '/admin/delete?error=1');
+                exit;
+            }
         }
     }
-}
 
 
 
@@ -88,9 +88,9 @@ public function deleteByNik()
             $data['error'] = $_SESSION['error'];
             unset($_SESSION['error']);
         }
-    $data['balita'] = $this->model('Data_model')->countBalita();
-    $data['ibuHamil'] = $this->model('Data_model')->countIbuHamil();
-    $data['lansia'] = $this->model('Data_model')->countLansia();
+        $data['balita'] = $this->model('Data_model')->countBalita();
+        $data['ibuHamil'] = $this->model('Data_model')->countIbuHamil();
+        $data['lansia'] = $this->model('Data_model')->countLansia();
         // Tampilkan tampilan
         $this->view('templates/navbar', $data);
         $this->view('admin/search', $data);
@@ -113,7 +113,7 @@ public function deleteByNik()
         $this->view('templates/navbar', $data);
         // Pass $data yang sekarang berisi judul dan list_data ke view
         $this->view('admin/input', $data);
-         // View ini juga perlu membaca $_SESSION['pesan']
+        // View ini juga perlu membaca $_SESSION['pesan']
         $this->view('templates/footeradmin');
     }
 
@@ -182,6 +182,13 @@ public function deleteByNik()
             header('Location: ' . BASEURL . '/admin/input');
             exit;
         }
+    }
+    public function upload()
+    {
+        $data['judul'] = 'upload gambar';
+        $this->view('templates/navbar', $data);
+        $this->view('admin/upload');
+        $this->view('templates/footeradmin');
     }
 
 }

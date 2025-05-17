@@ -23,6 +23,8 @@
         <li><a href="<?= BASEURL; ?>/admin/search"><i class="fas fa-search"></i> Search Data</a></li>
         <li><a href="<?= BASEURL; ?>/admin/input"><i class="fas fa-pen"></i> Input Data</a></li>
         <li><a href="<?= BASEURL; ?>/admin/list"><i class="fas fa-list"></i> List Data</a></li>
+        <li><a href="<?= BASEURL; ?>/admin/upload"><i class="fas fa-upload"></i> Upload Data</a></li>
+        
         <li><a href="<?= BASEURL; ?>/home/index"><i class="fas fa-sign-out"></i> Keluar </a></li>
       </ul>
     </div>

@@ -121,7 +121,7 @@ class User extends Controller
         }
 
         $data['judul'] = 'Dokumentasi Posyandu';
-        $data['dokumentasi'] = $this->model('Dokumentasi_model')->getAllDokumentasi();
+        // $data['dokumentasi'] = $this->model('Dokumentasi_model')->getAllDokumentasi();
 
         $this->view('templates/navbarUser', $data);
         $this->view('user/dokumentasi', $data);

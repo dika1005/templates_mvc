@@ -211,41 +211,45 @@ class admin extends Controller
 //     $this->view('admin/upload', $data);
 //     $this->view('templates/footeradmin');
 // }
-    public function upload()
+public function upload()
     {
         $data['judul'] = 'Upload Dokumentasi';
         $this->view('templates/navbar', $data);
-         $this->view('admin/upload', $data);
+        $this->view('admin/upload', $data);
     }
 
     public function kirim()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $judul = $_POST['judul'] ?? '';
-        $media = $_FILES['media'] ?? null;
-
-        if (!$judul || !$media || $media['error'] !== 0) {
-            echo "⚠️ Judul atau file tidak valid!";
-            return;
-        }
-
-        $fileData = file_get_contents($media['tmp_name']);
-        $fileType = $media['type'];
-
-        $this->model('Dokumentasi_Model')->simpan([
-            'judul' => $judul,
-            'gambar' => $fileData,
-            'tipe_gambar' => $fileType
-        ]);
-
-        header('Location: ' . BASEURL . '/admin/sukses'); // redirect ke halaman sukses
-        exit;
-    }
-}
-
-    public function sukses()
     {
-        echo "<h2>✅ Upload berhasil! Dokumentasi tersimpan dalam database!</h2>";
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $judul = $_POST['judul'] ?? '';
+            $media = $_FILES['media'] ?? null;
+
+            $data['judul'] = 'Upload Dokumentasi';
+
+            // Validasi
+            if (!$judul || !$media || $media['error'] !== 0) {
+                $data['berhasil'] = false;
+                $this->view('templates/navbar', $data);
+                $this->view('admin/upload', $data);
+                return;
+            }
+
+            // Ambil data file
+            $fileData = file_get_contents($media['tmp_name']);
+            $fileType = $media['type'];
+
+            // Simpan ke database
+            $status = $this->model('Dokumentasi_Model')->simpan([
+                'judul' => $judul,
+                'gambar' => $fileData,
+                'tipe_gambar' => $fileType
+            ]);
+
+            // Kirim status ke view
+            $data['berhasil'] = true;
+            $this->view('admin/upload', $data);
+
+        }
     }
 
 

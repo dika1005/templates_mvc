@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?= $data['judul'] ?? 'Upload Dokumentasi'; ?></title>
   <link rel="stylesheet" href="<?= BASEURL; ?>/css/upload.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
   <h1>🎉 Upload Dokumentasi Posyandu 🎈</h1>
   <div class="upload-box">
     <p>Yuk upload foto-foto lucu kegiatan Posyandu! 📸✨</p>
-<form method="POST" action="<?= BASEURL; ?>/admin/kirim" enctype="multipart/form-data">
+    <form method="POST" action="<?= BASEURL; ?>/admin/kirim" enctype="multipart/form-data">
       <input type="text" name="judul" placeholder="Masukkan Judul Dokumentasi" required />
       <input type="file" name="media" id="mediaUpload" accept="image/*,video/*" required />
 
@@ -47,5 +48,16 @@
       }
     });
   </script>
+
+  <?php if (isset($data['berhasil'])) : ?>
+  <script>
+    Swal.fire({
+      icon: '<?= $data['berhasil'] ? 'success' : 'error' ?>',
+      title: '<?= $data['berhasil'] ? 'Upload Berhasil!' : 'Upload Gagal!' ?>',
+      text: '<?= $data['berhasil'] ? 'Dokumentasi berhasil disimpan!' : 'Gagal menyimpan dokumentasi ke database.' ?>',
+      confirmButtonText: 'Oke'
+    });
+  </script>
+  <?php endif; ?>
 </body>
 </html>

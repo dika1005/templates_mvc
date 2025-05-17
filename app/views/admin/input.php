@@ -29,17 +29,6 @@
             border-color: #f5c6cb;
         }
 
-        /* Hapus style .action-links a jika sudah tidak ada tabel daftar */
-        /*
-        .action-links a {
-             margin-right: 10px;
-             text-decoration: none;
-        }
-         .action-links a i {
-             vertical-align: middle;
-         }
-         */
-        /* Pastikan elemen loader tersembunyi di awal */
         .loader {
             display: none;
             text-align: center;
@@ -55,7 +44,6 @@
 
 <body>
     <?php
-    // ... kode navbar jika di-load terpisah ...
     ?>
     <div class="container">
         <header class="admin-header">
@@ -70,24 +58,19 @@
 
         <div id="messageContainer" class="message-container">
             <?php
-            // --- KODE PHP UNTUK MENAMPILKAN PESAN DARI SESSION (SAMA SEPERTI SEBELUMNYA) ---
-            // Pastikan session dimulai jika belum (jika belum dilakukan di file utama seperti init.php)
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }
 
-            // Cek apakah ada pesan feedback di session
             if (isset($_SESSION['pesan'])) {
-                $pesan = $_SESSION['pesan']; // Ambil array pesan
-                unset($_SESSION['pesan']); // HAPUS PESAN DARI SESSION agar hanya tampil sekali
+                $pesan = $_SESSION['pesan'];
+                unset($_SESSION['pesan']);
 
-                // Tampilkan pesan
                 $alert_class = ($pesan['tipe'] == 'success') ? 'alert-success' : 'alert-danger';
                 echo '<div class="alert ' . $alert_class . '" role="alert">';
-                echo htmlspecialchars($pesan['isi']); // Gunakan htmlspecialchars untuk keamanan
+                echo htmlspecialchars($pesan['isi']);
                 echo '</div>';
             }
-            // -----------------------------------------------------------------------------
             ?>
         </div>
 
@@ -171,30 +154,10 @@
         </div>
 
         <?php
-        // --- HAPUS SELURUH BLOK KODE INI ---
-        /*
-            <div class="table-section card">
-                <h2><i class="material-icons">list_alt</i> Daftar Data</h2>
-                <div class="table-container">
-                    <table id="dataTable">
-                        <thead>
-                            <tr>
-                                // ... header ...
-                            </tr>
-                        </thead>
-                        <tbody>
-                            // ... PHP loop data ...
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            */
-        // ------------------------------------
         ?>
     </div>
 
     <script>
-        // Add current date to header
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('id-ID', {
             weekday: 'long',
             year: 'numeric',
@@ -202,11 +165,9 @@
             day: 'numeric'
         });
 
-        // Script untuk menampilkan spinner saat form disubmit
         document.getElementById('userForm').onsubmit = function() {
             document.getElementById('loadingSpinner').style.display = 'block';
         }
-        // Script untuk menyembunyikan spinner setelah halaman dimuat ulang
         window.onload = function() {
             document.getElementById('loadingSpinner').style.display = 'none';
         }

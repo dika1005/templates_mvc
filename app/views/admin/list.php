@@ -60,10 +60,12 @@ if (!isset($dataposyandu)) {
                     <?php endif; ?>
                 </tbody>
             </table>
-            <div class="container text-center mt-4">
-                <h2>Data Kegiatan Posyandu</h2>
-                <a href="<?= BASEURL; ?>/admin/laporan" class="btn btn-primary" target="_blank">📄 Cetak Laporan PDF</a>
+            <div style="margin-top: 24px; text-align: right;">
+                <a href="<?= BASEURL; ?>/admin/laporan" target="_blank">
+                    <button>📄 Cetak Data PDF</button>
+                </a>
             </div>
+
 
 
         </div>

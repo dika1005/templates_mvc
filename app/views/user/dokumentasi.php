@@ -32,7 +32,7 @@ $dokumentasi = [
         .galeri-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 10px;
+            gap: 20px;
             padding: 10px;
             justify-items: center;
             align-items: start;
@@ -149,7 +149,7 @@ $dokumentasi = [
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const images = document.querySelectorAll('.galeri-item img');
             images.forEach(img => {
                 if (img.complete) {
@@ -186,7 +186,7 @@ $dokumentasi = [
             if (event && event.target && event.target.id === 'modalImage') {
                 return;
             }
-            if (event && event.target && event.target.classList.contains('close')) {} else if (event && event.target !== document.getElementById('imageModal')) {
+            if (event && event.target && event.target.classList.contains('close')) { } else if (event && event.target !== document.getElementById('imageModal')) {
                 return;
             }
 
@@ -197,7 +197,7 @@ $dokumentasi = [
             document.body.classList.remove('modal-open');
         }
 
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === "Escape") {
                 closeModal();
             }

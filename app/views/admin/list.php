@@ -20,27 +20,27 @@ if (!isset($dataposyandu)) {
 
 <body>
     <div class="center-wrapper">
-    <div class="container">
-        <h1>📋 Data yang Sudah Ada</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Tanggal</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!empty($dataposyandu)): ?>
-                    <?php $no = 1; ?>
-                    <?php foreach ($dataposyandu as $row): ?>
-                        <tr>
-                            <td><?= $no++ ?></td>
-                            <td><?= htmlspecialchars($row['Nama']) ?></td>
-                            <td><?= date('Y-m-d') ?></td>
-                            <td>
-                                <button onclick="showModal(
+        <div class="container">
+            <h1>📋 Data yang Sudah Ada</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Tanggal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($dataposyandu)): ?>
+                        <?php $no = 1; ?>
+                        <?php foreach ($dataposyandu as $row): ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= htmlspecialchars($row['Nama']) ?></td>
+                                <td><?= date('Y-m-d') ?></td>
+                                <td>
+                                    <button onclick="showModal(
                                     '<?= htmlspecialchars($row['Nama']) ?>',
                                     '<?= date('Y-m-d') ?>',
                                     '<?= htmlspecialchars($row['Alamat']) ?>',
@@ -50,18 +50,24 @@ if (!isset($dataposyandu)) {
                                     '<?= htmlspecialchars($row['tinggi_badan']) ?>',
                                     '<?= htmlspecialchars($row['berat_badan']) ?>'
                                 )">Lihat</button>
-                            </td>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4">Tidak ada data untuk ditampilkan.</td>
                         </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="4">Tidak ada data untuk ditampilkan.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+            <div style="margin-top: 24px; text-align: right;">
+                <a href="<?= BASEURL; ?>#" target="_blank">
+                    <button>📄 Download Data PDF</button>
+                </a>
+            </div>
+
+        </div>
     </div>
-</div>
     <!-- Modal -->
     <div id="modal">
         <div class="modal-content">

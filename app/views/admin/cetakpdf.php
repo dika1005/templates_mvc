@@ -1,5 +1,5 @@
 <?php
-require BASEURL . '/pdf/fpdf.php';
+require __DIR__ . '/../../../public/pdf/fpdf.php';
 
 
 // Contoh data kegiatan Posyandu

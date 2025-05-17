@@ -28,10 +28,10 @@ $pdf->Cell(40, 10, 'Jumlah Peserta', 1, 1, 'C', true);
 
 // Isi tabel
 foreach ($data as $row) {
-  $pdf->Cell(40, 10, $row[0], 1 ,align:'C');
-  $pdf->Cell(60, 10, $row[1], 1 ,align:'C');
-  $pdf->Cell(40, 10, $row[2], 1 ,align:'C');
-  $pdf->Cell(40, 10, $row[3], 1 ,align:'C');
+  $pdf->Cell(40, 10, $row[0], 1, align: 'C');
+  $pdf->Cell(60, 10, $row[1], 1, align: 'C');
+  $pdf->Cell(40, 10, $row[2], 1, align: 'C');
+  $pdf->Cell(40, 10, $row[3], 1, align: 'C');
   $pdf->Ln();
 }
 

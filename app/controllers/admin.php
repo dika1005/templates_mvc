@@ -191,4 +191,53 @@ class admin extends Controller
         $this->view('templates/footeradmin');
     }
 
+    public function laporan()
+    {
+        // Load library FPDF
+        require_once dirname(__DIR__, 2) . '/public/pdf/fpdf.php';
+
+        // Ambil semua data dari tabel dataposyandu
+        $dataPosyandu = $this->model('Data_model')->getAllDataPosyandu();
+
+        // Buat PDF baru
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+
+        // Judul
+        $pdf->Cell(0, 10, 'Laporan Data Posyandu', 0, 1, 'C');
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Ln(5);
+
+        // Header tabel
+        $pdf->SetFillColor(173, 216, 230); // biru muda
+        $pdf->SetFont('Arial', 'B', 11);
+
+        $pdf->Cell(40, 10, 'NIK', 1, 0, 'C', true);
+        $pdf->Cell(40, 10, 'Nama', 1, 0, 'C', true);
+        $pdf->Cell(15, 10, 'Umur', 1, 0, 'C', true);
+        $pdf->Cell(35, 10, 'Alamat', 1, 0, 'C', true);
+        $pdf->Cell(25, 10, 'JK', 1, 0, 'C', true);
+        $pdf->Cell(20, 10, 'BB (kg)', 1, 0, 'C', true);
+        $pdf->Cell(20, 10, 'TB (cm)', 1, 1, 'C', true);
+
+        // Isi tabel dari database
+        $pdf->SetFont('Arial', '', 10);
+        foreach ($dataPosyandu as $row) {
+            $pdf->Cell(40, 10, $row['NIK'], 1, 0, 'C');
+            $pdf->Cell(40, 10, $row['Nama'], 1, 0, 'C');
+            $pdf->Cell(15, 10, $row['Umur'], 1, 0, 'C');
+            $pdf->Cell(35, 10, $row['Alamat'], 1, 0, 'C');
+            $pdf->Cell(25, 10, $row['Jk'], 1, 0, 'C');
+            $pdf->Cell(20, 10, $row['berat_badan'], 1, 0, 'C');
+            $pdf->Cell(20, 10, $row['tinggi_badan'], 1, 1, 'C');
+        }
+
+        // Output PDF ke browser
+        $pdf->Output('I', 'Laporan_Data_Posyandu.pdf');
+    }
+
+
+
+
 }

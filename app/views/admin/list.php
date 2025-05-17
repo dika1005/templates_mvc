@@ -61,10 +61,12 @@ if (!isset($dataposyandu)) {
                 </tbody>
             </table>
             <div style="margin-top: 24px; text-align: right;">
-                <a href="<?= BASEURL; ?>#" target="_blank">
-                    <button>📄 Download Data PDF</button>
+                <a href="<?= BASEURL; ?>/admin/laporan" target="_blank">
+                    <button>📄 Cetak Data PDF</button>
                 </a>
             </div>
+
+
 
         </div>
     </div>

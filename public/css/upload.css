@@ -6,20 +6,15 @@
         padding: 0;
         justify-content: center;
         align-items: center;
-
-
     }
-
     h1 {
       color: #66a8ff;
       font-size: 2.5rem;
       margin-bottom: 1rem;
       text-shadow: 2px 2px #fff0f5;
         text-align: center;
-        margin-top:130px;
-        
+        margin-top:130px;  
     }
-
     .upload-box {
         display: flex;
         flex-direction: column;

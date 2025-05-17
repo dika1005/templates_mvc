@@ -35,17 +35,32 @@ class Dokumentasi_model
     }
 
     // Simpan gambar ke database (upload)
-    public function uploadGambar($judul, $file)
-    {
-        $gambar = file_get_contents($file['tmp_name']);
-        $tipe_gambar = $file['type'];
+//     public function uploadGambar($judul, $file)
+//     {
+//         try {
+//             $gambar = file_get_contents($file['tmp_name']);
+//             $tipe_gambar = $file['type'];
 
-        $this->db->query("INSERT INTO " . $this->table . " (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)");
-        $this->db->bind('judul', $judul);
-        $this->db->bind('gambar', $gambar, PDO::PARAM_LOB);
-        $this->db->bind('tipe_gambar', $tipe_gambar);
-        return $this->db->execute();
-    }
+//             $this->db->query("INSERT INTO " . $this->table . " (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)");
+//             $this->db->bind('judul', $judul);
+//             $this->db->bind('gambar', $gambar, PDO::PARAM_LOB);
+//             $this->db->bind('tipe_gambar', $tipe_gambar);
+//             return $this->db->execute();
+//         } catch (PDOException $e) {
+//     die("🔥 ERROR PDO: " . $e->getMessage());
+// }
+
+//     }
+
+public function simpan($data)
+{
+    $query = "INSERT INTO dokumentasi (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)";
+    $this->db->query($query);
+    $this->db->bind('judul', $data['judul']);
+    $this->db->bind('gambar', $data['gambar'], PDO::PARAM_LOB);
+    $this->db->bind('tipe_gambar', $data['tipe_gambar']);
+    return $this->db->execute(); // Harus ada return true/false
+}
 
     // Hapus gambar berdasarkan ID
     public function deleteGambar($id)

@@ -183,39 +183,74 @@ class admin extends Controller
             exit;
         }
     }
+// public function upload()
+// {
+//     if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
+//         $judul = $_POST["judul"];
+//         $file = $_FILES["media"];
+
+//         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/webm', 'video/ogg'];
+//         $maxSize = 10 * 1024 * 1024; // 10MB
+
+//         if (!in_array($file['type'], $allowedTypes)) {
+//             echo "<script>alert('Jenis file tidak didukung 😢 Hanya gambar dan video ya!');</script>";
+//         } elseif ($file['size'] > $maxSize) {
+//             echo "<script>alert('Ukuran file terlalu besar 😱 Maksimal 10MB!');</script>";
+//         } else {
+//             if ($this->model('Dokumentasi_model')->uploadGambar($judul, $file)) {
+//                 header("Location: " . BASEURL . "/user/dokumentasi");
+//                 exit();
+//             } else {
+//                 echo "<script>alert('Gagal menyimpan ke database 😭');</script>";
+//             }
+//         }
+//     }
+
+//     $data['judul'] = 'Upload Dokumentasi';
+//     $this->view('templates/navbar', $data);
+//     $this->view('admin/upload', $data);
+//     $this->view('templates/footeradmin');
+// }
     public function upload()
     {
-        $data['judul'] = 'upload gambar';
+        $data['judul'] = 'Upload Dokumentasi';
         $this->view('templates/navbar', $data);
-        $this->view('admin/upload');
-        $this->view('templates/footeradmin');
+         $this->view('admin/upload', $data);
+    }
 
+    public function kirim()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $judul = $_POST['judul'] ?? '';
+        $media = $_FILES['media'] ?? null;
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
-        $judul = $_POST["judul"];
-        $file = $_FILES["media"];
-
-        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/webm', 'video/ogg'];
-        $maxSize = 10 * 1024 * 1024; // 10MB
-
-        if (!in_array($file['type'], $allowedTypes)) {
-            echo "<script>alert('Jenis file tidak didukung 😢 Hanya gambar dan video ya!');</script>";
-        } elseif ($file['size'] > $maxSize) {
-            echo "<script>alert('Ukuran file terlalu besar 😱 Maksimal 10MB!');</script>";
-        } else {
-            if ($this->model('Dokumentasi_model')->uploadGambar($judul, $file)) {
-                header("Location: " . BASEURL . "/admin/galeri");
-                exit();
-            } else {
-                echo "<script>alert('Gagal menyimpan ke database 😭');</script>";
-            }
+        if (!$judul || !$media || $media['error'] !== 0) {
+            echo "⚠️ Judul atau file tidak valid!";
+            return;
         }
-    
 
-    $data['judul'] = "Upload Dokumentasi";
+        $fileData = file_get_contents($media['tmp_name']);
+        $fileType = $media['type'];
+
+        $this->model('Dokumentasi_Model')->simpan([
+            'judul' => $judul,
+            'gambar' => $fileData,
+            'tipe_gambar' => $fileType
+        ]);
+
+        header('Location: ' . BASEURL . '/admin/sukses'); // redirect ke halaman sukses
+        exit;
+    }
 }
 
+    public function sukses()
+    {
+        echo "<h2>✅ Upload berhasil! Dokumentasi tersimpan dalam database!</h2>";
     }
+
+
+
+
 
     public function laporan()
     {

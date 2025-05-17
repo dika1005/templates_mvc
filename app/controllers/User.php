@@ -121,10 +121,70 @@ class User extends Controller
         }
 
         $data['judul'] = 'Dokumentasi Posyandu';
-        // $data['dokumentasi'] = $this->model('Dokumentasi_model')->getAllDokumentasi();
+
+        // Memanggil model Dokumentasi_model
+        $dokumentasiModel = $this->model('Dokumentasi_model');
+
+        // Mengambil semua data dokumentasi
+        $data['dokumentasi'] = $dokumentasiModel->getAllDokumentasi();
 
         $this->view('templates/navbarUser', $data);
         $this->view('user/dokumentasi', $data);
         $this->view('templates/footeruser');
+    }
+
+    // Mendapatkan gambar dari database (untuk ditampilkan)
+    public function getGambar($id)
+    {
+        $dokumentasiModel = $this->model('Dokumentasi_model');
+        $gambarData = $dokumentasiModel->getGambarById($id);
+
+        if ($gambarData) {
+            header("Content-Type: " . $gambarData['tipe_gambar']);
+            echo $gambarData['gambar'];
+        } else {
+            http_response_code(404);
+            echo "Gambar tidak ditemukan.";
+        }
+    }
+
+    // Mengunggah gambar baru (halaman form dan proses upload)
+    public function uploadDokumentasi()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['gambar'])) {
+            $judul = $_POST['judul'];
+            $file = $_FILES['gambar'];
+
+            $dokumentasiModel = $this->model('Dokumentasi_model');
+
+            if ($dokumentasiModel->uploadGambar($judul, $file)) {
+                $_SESSION['pesan'] = "Gambar berhasil diunggah.";
+            } else {
+                $_SESSION['pesan'] = "Gagal mengunggah gambar.";
+            }
+
+            header("Location: " . BASEURL . "/user/dokumentasi");
+            exit;
+        }
+
+        $data['judul'] = 'Unggah Dokumentasi';
+        $this->view('templates/navbarUser', $data);
+        $this->view('user/upload_dokumentasi', $data);
+        $this->view('templates/footeruser');
+    }
+
+    // Menghapus gambar berdasarkan ID
+    public function deleteDokumentasi($id)
+    {
+        $dokumentasiModel = $this->model('Dokumentasi_model');
+
+        if ($dokumentasiModel->deleteGambar($id)) {
+            $_SESSION['pesan'] = "Gambar berhasil dihapus.";
+        } else {
+            $_SESSION['pesan'] = "Gagal menghapus gambar.";
+        }
+
+        header("Location: " . BASEURL . "/user/dokumentasi");
+        exit;
     }
 }

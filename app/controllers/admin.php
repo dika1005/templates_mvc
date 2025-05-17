@@ -9,34 +9,34 @@ class admin extends Controller
         $this->view('admin/index');
         $this->view('templates/footeradmin');
     }
-public function delete()
-{
-    $data['judul'] = 'Delete admin';
-    $this->view('templates/navbar', $data);
-    $this->view('admin/delete');
-    $this->view('templates/footeradmin');
-}
+    public function delete()
+    {
+        $data['judul'] = 'Delete admin';
+        $this->view('templates/navbar', $data);
+        $this->view('admin/delete');
+        $this->view('templates/footeradmin');
+    }
 
-public function deleteByNik()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nik = $_POST['nik'];
+    public function deleteByNik()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nik = $_POST['nik'];
 
-        // Memastikan model Admin_model di-load dengan benar
-        $adminModel = $this->model('Data_model'); // Memanggil model Admin_model
+            // Memastikan model Admin_model di-load dengan benar
+            $adminModel = $this->model('Data_model'); // Memanggil model Admin_model
 
-        // Panggil fungsi hapusDataByNik
-        if ($adminModel->hapusDataByNik($nik)) {
-            // Redirect jika berhasil
-            header('Location: ' . BASEURL . '/admin/delete?success=1');
-            exit;
-        } else {
-            // Redirect jika gagal
-            header('Location: ' . BASEURL . '/admin/delete?error=1');
-            exit;
+            // Panggil fungsi hapusDataByNik
+            if ($adminModel->hapusDataByNik($nik)) {
+                // Redirect jika berhasil
+                header('Location: ' . BASEURL . '/admin/delete?success=1');
+                exit;
+            } else {
+                // Redirect jika gagal
+                header('Location: ' . BASEURL . '/admin/delete?error=1');
+                exit;
+            }
         }
     }
-}
 
 
 
@@ -88,9 +88,9 @@ public function deleteByNik()
             $data['error'] = $_SESSION['error'];
             unset($_SESSION['error']);
         }
-    $data['balita'] = $this->model('Data_model')->countBalita();
-    $data['ibuHamil'] = $this->model('Data_model')->countIbuHamil();
-    $data['lansia'] = $this->model('Data_model')->countLansia();
+        $data['balita'] = $this->model('Data_model')->countBalita();
+        $data['ibuHamil'] = $this->model('Data_model')->countIbuHamil();
+        $data['lansia'] = $this->model('Data_model')->countLansia();
         // Tampilkan tampilan
         $this->view('templates/navbar', $data);
         $this->view('admin/search', $data);
@@ -113,7 +113,7 @@ public function deleteByNik()
         $this->view('templates/navbar', $data);
         // Pass $data yang sekarang berisi judul dan list_data ke view
         $this->view('admin/input', $data);
-         // View ini juga perlu membaca $_SESSION['pesan']
+        // View ini juga perlu membaca $_SESSION['pesan']
         $this->view('templates/footeradmin');
     }
 
@@ -183,5 +183,54 @@ public function deleteByNik()
             exit;
         }
     }
+
+    public function laporan()
+    {
+        // Load library FPDF
+        require_once dirname(__DIR__, 2) . '/public/pdf/fpdf.php';
+
+        // Ambil semua data dari tabel dataposyandu
+        $dataPosyandu = $this->model('Data_model')->getAllDataPosyandu();
+
+        // Buat PDF baru
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+
+        // Judul
+        $pdf->Cell(0, 10, 'Laporan Data Posyandu', 0, 1, 'C');
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Ln(5);
+
+        // Header tabel
+        $pdf->SetFillColor(173, 216, 230); // biru muda
+        $pdf->SetFont('Arial', 'B', 11);
+
+        $pdf->Cell(40, 10, 'NIK', 1, 0, 'C', true);
+        $pdf->Cell(40, 10, 'Nama', 1, 0, 'C', true);
+        $pdf->Cell(15, 10, 'Umur', 1, 0, 'C', true);
+        $pdf->Cell(35, 10, 'Alamat', 1, 0, 'C', true);
+        $pdf->Cell(25, 10, 'JK', 1, 0, 'C', true);
+        $pdf->Cell(20, 10, 'BB (kg)', 1, 0, 'C', true);
+        $pdf->Cell(20, 10, 'TB (cm)', 1, 1, 'C', true);
+
+        // Isi tabel dari database
+        $pdf->SetFont('Arial', '', 10);
+        foreach ($dataPosyandu as $row) {
+            $pdf->Cell(40, 10, $row['NIK'], 1, 0, 'C');
+            $pdf->Cell(40, 10, $row['Nama'], 1, 0, 'C');
+            $pdf->Cell(15, 10, $row['Umur'], 1, 0, 'C');
+            $pdf->Cell(35, 10, $row['Alamat'], 1, 0, 'C');
+            $pdf->Cell(25, 10, $row['Jk'], 1, 0, 'C');
+            $pdf->Cell(20, 10, $row['berat_badan'], 1, 0, 'C');
+            $pdf->Cell(20, 10, $row['tinggi_badan'], 1, 1, 'C');
+        }
+
+        // Output PDF ke browser
+        $pdf->Output('I', 'Laporan_Data_Posyandu.pdf');
+    }
+
+
+
 
 }

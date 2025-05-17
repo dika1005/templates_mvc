@@ -8,137 +8,82 @@ body {
 
     font-family: 'Segoe UI', sans-serif;
 }
-.form-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 100px); /* sisakan ruang untuk navbar */
-}
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    h1, h3 {
+      text-align: center;
+      color: #444;
+    }
 
-/* Container untuk form dan hasil pencarian */
-.container {
-    background: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    width: 100%;
-    box-sizing: border-box;
-}
+    /* Input group */
+    .input-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .input-group input {
+      padding: 10px;
+      flex: 1;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+    }
+    .btn-klee {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
 
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn-klee:hover {
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
 
-/* FORM CONTAINER - Sorotan spotlight! */
-.container {
-    width: 100%;
-    max-width: 800px;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    transition: all 0.5s ease;
-}
+    }
 
-/* JUDUL - Tajuk besar opera */
-h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-    font-size: 2em;
-}
+    /* Tabel */
+    #dataTable {
+      display: none;
+      margin-top: 20px;
+      overflow-x: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      background: white;
+      padding: 20px;
+    }
 
-/* LABEL INPUT */
-label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-    color: #444;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+    table thead {
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(41, 128, 185, 0.3)), url('nama-gambar.jpg');
 
-/* INPUT FIELD */
-input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    transition: 0.3s;
-}
+    }
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #eee;
+      text-align: left;
+    }
 
-input[type="text"]:focus {
-    border-color: rgb(164, 53, 238);
-    box-shadow: 0 0 8px rgba(164, 53, 238, 0.3);
-    outline: none;
-}
-
-/* TOMBOL SUBMIT - Kipas mewah sang diva! */
-input[type="submit"] {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(45deg, rgb(164, 53, 238), rgb(123, 31, 162));
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(164, 53, 238, 0.4);
-}
-
-/* TABEL HASIL CARI */
-table {
-    width: 100%;
-    border-collapse: separate;
-    margin-top: 30px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-th {
-    background: linear-gradient(45deg, rgb(164, 53, 238), rgb(123, 31, 162));
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f8f8f8;
-}
-
-tr:hover {
-    background-color: #f0f0f0;
-}
-
-/* LOADER KETIKA MENCARI */
-.loader {
-    display: none;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.loader div {
-    width: 10px;
-    height: 10px;
-    background: rgb(164, 53, 238);
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 5px;
-    animation: bounce 0.5s ease infinite;
-}
-
-.loader div:nth-child(2) { animation-delay: 0.1s; }
-.loader div:nth-child(3) { animation-delay: 0.2s; }
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    canvas {
+      display: block;
+      margin: 30px auto;
+      max-width: 100%;
+    }
+    canvas#statsChart {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  aspect-ratio: 3 / 1;
+  margin: 0 auto;
+  display: block;
 }

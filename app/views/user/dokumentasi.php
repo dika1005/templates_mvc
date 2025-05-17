@@ -1,4 +1,5 @@
 <?php
+// Dummy data dokumentasi (tidak diubah)
 $dokumentasi = [
     ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
     ['judul' => 'Posyandu A', 'url_gambar' => 'https://asset.kompas.com/crops/N0nrBGPpec71m_L7ARAIy23ge3E=/0x0:0x0/750x500/data/photo/buku/64910f4eb91eb.png'],
@@ -32,12 +33,14 @@ $dokumentasi = [
         .galeri-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 10px;
+            gap: 20px;
+            gap: 20px;
             padding: 10px;
             justify-items: center;
             align-items: start;
             margin: auto;
             max-width: 1200px;
+            /* clear: both; /* Tambahkan jika ada float di atasnya */
         }
 
         .galeri-item {
@@ -106,22 +109,74 @@ $dokumentasi = [
             }
         }
 
-        .close {
+        /* === Gaya untuk Tombol Close dan Tombol Aksi Header === */
+        /* Container untuk tombol close dan aksi lainnya di header modal */
+        .modal-header-actions {
             position: absolute;
             top: 20px;
+            /* Sesuaikan posisi dari atas */
             right: 30px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
+            /* Sesuaikan posisi dari kanan */
             z-index: 100;
-            pointer-events: auto;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            /* Pastikan di atas konten */
+            pointer-events: none;
+            /* Default: biarkan event klik tembus (untuk klik di luar tombol) */
+            display: flex;
+            /* Atur item dalam baris */
+            gap: 50px;
+            /* Jarak antar tombol */
+            align-items: center;
+            /* Pusatkan item secara vertikal */
         }
 
-        .close:hover {
-            color: red;
+
+        /* Gaya dasar untuk semua tombol ikon di header (Close, Download, Copy) */
+        .modal-icon-btn {
+            display: block;
+            /* Untuk flexbox, pastikan block */
+            color: #fff;
+            /* Warna putih */
+            font-size: 28px;
+            /* Ukuran ikon/font, sesuaikan */
+            font-weight: bold;
+            /* Tebal */
+            cursor: pointer;
+            pointer-events: auto;
+            /* Aktifkan kembali event pointer untuk elemen ini */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            /* Bayangan teks/ikon */
+            text-decoration: none;
+            /* Hapus garis bawah link */
+            background: none;
+            /* Hapus background */
+            border: none;
+            /* Hapus border */
+            padding: 0;
+            /* Hapus padding */
+            margin: 0;
+            /* Hapus margin */
+            line-height: 1;
+            /* Atur line height */
+            transition: color 0.3s ease;
+            /* Transisi saat hover */
         }
+
+        /* Gaya khusus untuk tombol Close */
+        .close.modal-icon-btn {
+            font-size: 40px;
+            /* Biarkan ukuran X lebih besar */
+            line-height: 1;
+            padding-top: 2px;
+            /* Penyesuaian vertikal jika diperlukan */
+        }
+
+
+        .modal-icon-btn:hover {
+            color: red;
+            /* Efek hover */
+        }
+
+        /* ===================================================== */
 
         .modal-open {
             overflow: hidden;
@@ -144,12 +199,19 @@ $dokumentasi = [
     </div>
 
     <div id="imageModal" class="modal" onclick="closeModal(event)">
-        <span class="close" onclick="closeModal(event)">&times;</span>
+        <div class="modal-header-actions">
+            <a id="downloadImage" href="#" download class="modal-icon-btn" title="Download Image">
+                &#x2913; </a>
+            <button id="copyLink" class="modal-icon-btn" title="Copy Image URL">
+                &#x2398; </button>
+            <span class="close modal-icon-btn" onclick="closeModal(event)" title="Close">&times;</span>
+        </div>
         <img class="modal-content" id="modalImage" onclick="event.stopPropagation()">
+
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const images = document.querySelectorAll('.galeri-item img');
             images.forEach(img => {
                 if (img.complete) {
@@ -172,12 +234,53 @@ $dokumentasi = [
                     img.classList.add('landscape');
                 }
             }
+
+            // === Script untuk Fitur Download dan Bagikan ===
+            const copyLinkButton = document.getElementById('copyLink');
+            if (copyLinkButton) {
+                copyLinkButton.addEventListener('click', function () {
+                    const imageUrl = document.getElementById('modalImage').src; // Ambil URL dari gambar modal
+                    if (imageUrl) {
+                        navigator.clipboard.writeText(imageUrl).then(function () {
+                            const originalTitle = copyLinkButton.getAttribute('title');
+                            copyLinkButton.textContent = 'Copied!'; // Feedback teks di tombol
+                            copyLinkButton.removeAttribute('title'); // Hapus title sementara
+                            setTimeout(() => {
+                                // Kembalikan teks dan title setelah beberapa saat
+                                // Anda mungkin perlu menyimpan ikon unicode jika menggunakannya
+                                copyLinkButton.innerHTML = '&#x2398;'; // Ganti kembali jika pakai ikon
+                                copyLinkButton.setAttribute('title', originalTitle);
+                            }, 2000);
+                        }).catch(function (err) {
+                            console.error('Failed to copy image URL: ', err);
+                            const originalTitle = copyLinkButton.getAttribute('title');
+                            copyLinkButton.textContent = 'Failed!'; // Feedback error
+                            copyLinkButton.removeAttribute('title');
+                            setTimeout(() => {
+                                copyLinkButton.innerHTML = '&#x2398;'; // Ganti kembali jika pakai ikon
+                                copyLinkButton.setAttribute('title', originalTitle);
+                            }, 2000);
+                        });
+                    }
+                });
+            }
+            // ==============================================
+
         });
 
+        // --- Fungsi Modal (Diperbarui) ---
         function openModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
+            const downloadLink = modal.querySelector('#downloadImage'); // Ambil link di dalam modal
+
             modalImage.src = src;
+
+            if (downloadLink) {
+                downloadLink.href = src;
+                downloadLink.setAttribute('download', '');
+            }
+
             modal.style.display = 'block';
             document.body.classList.add('modal-open');
         }
@@ -186,18 +289,23 @@ $dokumentasi = [
             if (event && event.target && event.target.id === 'modalImage') {
                 return;
             }
-            if (event && event.target && event.target.classList.contains('close')) {} else if (event && event.target !== document.getElementById('imageModal')) {
+            if (event && event.target && event.target.classList.contains('close')) { } else if (event && event.target !== document.getElementById('imageModal')) {
                 return;
             }
+
 
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
             modal.style.display = 'none';
-            modalImage.src = '';
+            modalImage.src = ''; // Kosongkan src untuk menghemat memori
+            if (document.getElementById('downloadImage')) {
+                document.getElementById('downloadImage').href = '#';
+                document.getElementById('downloadImage').removeAttribute('download'); // Hapus atribut download
+            }
             document.body.classList.remove('modal-open');
         }
 
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             if (event.key === "Escape") {
                 closeModal();
             }

@@ -88,7 +88,9 @@ public function deleteByNik()
             $data['error'] = $_SESSION['error'];
             unset($_SESSION['error']);
         }
-
+    $data['balita'] = $this->model('Data_model')->countBalita();
+    $data['ibuHamil'] = $this->model('Data_model')->countIbuHamil();
+    $data['lansia'] = $this->model('Data_model')->countLansia();
         // Tampilkan tampilan
         $this->view('templates/navbar', $data);
         $this->view('admin/search', $data);
@@ -181,4 +183,5 @@ public function deleteByNik()
             exit;
         }
     }
+
 }

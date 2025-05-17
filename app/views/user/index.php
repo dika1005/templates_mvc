@@ -3,35 +3,30 @@
 <body>
     <main>
         <?php
-        // Ambil data user ke variabel lokal untuk kemudahan akses
-        $user = $data['user'] ?? null; // Gunakan null coalescing operator untuk keamanan
+        $user = $data['user'] ?? null;
         ?>
 
         <h1>Selamat Datang, <?= $user ? htmlspecialchars($user['Nama']) : 'Pengguna!'; ?></h1>
         <p>Silakan pilih menu di navbar untuk mengakses fitur yang tersedia.</p>
 
         <?php
-        // Kode untuk menangani pesan flash yang formatnya array ['tipe' => ..., 'isi' => ...]
-        $message = $data['message'] ?? null; // Ambil pesan dari data
-        $displayMessage = null; // Variabel untuk pesan string yang akan ditampilkan
-        $messageType = 'info'; // Tipe default
+        $message = $data['message'] ?? null;
+        $displayMessage = null;
+        $messageType = 'info';
         
-        // Cek apakah pesan adalah array dan memiliki kunci 'isi'
         if (is_array($message) && isset($message['isi']) && !empty($message['isi'])) {
-            $displayMessage = $message['isi']; // Ambil isi pesan
-            $messageType = $message['tipe'] ?? 'info'; // Ambil tipe, default info
+            $displayMessage = $message['isi'];
+            $messageType = $message['tipe'] ?? 'info';
         }
-        // Jika pesan format string lama (kasus lama atau kesalahan), bisa ditangani juga
         else if (is_string($message) && !empty($message)) {
-            $displayMessage = $message; // Ambil pesan string
-            $messageType = 'info'; // Default info
+            $displayMessage = $message;
+            $messageType = 'info';
         }
         ?>
 
-        <?php // Gunakan $displayMessage untuk mengecek apakah ada pesan string untuk ditampilkan ?>
         <?php if ($displayMessage): ?>
             <div class="alert alert-<?= htmlspecialchars($messageType); ?>">
-                <?= htmlspecialchars($displayMessage); // Tampilkan pesan string dan sanitasi ?>
+                <?= htmlspecialchars($displayMessage); ?>
             </div>
         <?php endif; ?>
 

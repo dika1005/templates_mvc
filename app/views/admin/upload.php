@@ -40,8 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
   <div class="upload-box">
     <p>Yuk upload foto-foto lucu kegiatan Posyandu! 📸✨</p>
 <form method="POST" enctype="multipart/form-data">
+  <input type="text" name="judul" placeholder="Masukkan Judul Dokumentasi" required />
   <input type="file" name="media" id="mediaUpload" accept="image/*,video/*" required />
-  
+
   <div class="form-controls">
     <label for="mediaUpload" class="custom-file-upload">📁 Pilih File Lucu</label>
     <button type="submit">Upload Sekarang!</button>
@@ -49,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
 
   <div class="preview" id="previewBox"></div>
 </form>
+
 
   </div>
 

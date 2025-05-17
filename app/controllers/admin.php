@@ -189,6 +189,32 @@ class admin extends Controller
         $this->view('templates/navbar', $data);
         $this->view('admin/upload');
         $this->view('templates/footeradmin');
+
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES["media"])) {
+        $judul = $_POST["judul"];
+        $file = $_FILES["media"];
+
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/webm', 'video/ogg'];
+        $maxSize = 10 * 1024 * 1024; // 10MB
+
+        if (!in_array($file['type'], $allowedTypes)) {
+            echo "<script>alert('Jenis file tidak didukung 😢 Hanya gambar dan video ya!');</script>";
+        } elseif ($file['size'] > $maxSize) {
+            echo "<script>alert('Ukuran file terlalu besar 😱 Maksimal 10MB!');</script>";
+        } else {
+            if ($this->model('Dokumentasi_model')->uploadGambar($judul, $file)) {
+                header("Location: " . BASEURL . "/admin/galeri");
+                exit();
+            } else {
+                echo "<script>alert('Gagal menyimpan ke database 😭');</script>";
+            }
+        }
+    
+
+    $data['judul'] = "Upload Dokumentasi";
+}
+
     }
 
     public function laporan()

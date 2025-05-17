@@ -1,24 +1,15 @@
 <?php
-// Ambil pesan dari data, default null jika tidak ada
-// Controller sekarang mengirim pesan dalam $data['message'] tapi mengambilnya dari $_SESSION['pesan']
-// Jadi kita tetap mengambil dari $data['message'] sesuai yang dikirim controller.
 $message = $data['message'] ?? null;
-
-// Variabel untuk menyimpan pesan string dan tipenya jika pesan valid
 $displayMessage = null;
-$messageType = 'info'; // Default type
+$messageType = 'info';
 
-// Cek apakah pesan adalah array dan memiliki kunci 'isi'
 if (is_array($message) && isset($message['isi']) && !empty($message['isi'])) {
   $displayMessage = $message['isi'];
-  $messageType = $message['tipe'] ?? 'info'; // Ambil tipe jika ada, default 'info'
-}
-// Jika $message adalah string (kasus lama atau kesalahan), bisa ditangani juga jika perlu
-else if (is_string($message) && !empty($message)) {
+  $messageType = $message['tipe'] ?? 'info';
+} else if (is_string($message) && !empty($message)) {
   $displayMessage = $message;
-  $messageType = 'info'; // Default ke info untuk pesan string lama
+  $messageType = 'info';
 }
-
 ?>
 
 <link rel="stylesheet" href="<?= BASEURL; ?>/css/update.css">
@@ -27,13 +18,11 @@ else if (is_string($message) && !empty($message)) {
 <div class="container large">
   <h2>Update Data Pengguna Posyandu</h2>
 
-  <?php // Gunakan $displayMessage untuk mengecek dan menampilkan pesan ?>
   <?php if ($displayMessage): ?>
     <div class="alert alert-<?= htmlspecialchars($messageType); ?>">
-      <?= htmlspecialchars($displayMessage); // Tampilkan pesan string dan sanitasi ?>
+      <?= htmlspecialchars($displayMessage); ?>
     </div>
   <?php endif; ?>
-
 
   <form method="post" action="<?= BASEURL; ?>/user/update">
     <div class="form-group">

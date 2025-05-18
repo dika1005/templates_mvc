@@ -16,7 +16,7 @@
       <input type="file" name="media" id="mediaUpload" accept="image/*,video/*" required />
 
       <div class="form-controls">
-        <label for="mediaUpload" class="custom-file-upload">📁 Pilih File Lucu</label>
+        <label for="mediaUpload" class="custom-file-upload">📁 Pilih File </label>
         <button type="submit">Upload Sekarang!</button>
       </div>
 

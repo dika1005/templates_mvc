@@ -13,7 +13,7 @@
       margin-bottom: 1rem;
       text-shadow: 2px 2px #fff0f5;
         text-align: center;
-        margin-top:130px;  
+        margin-top:110px;  
     }
     .upload-box {
         display: flex;
@@ -105,15 +105,23 @@ input[type="file"] {
   transform: scale(1.05);
 }
 .upload-box {
-  text-align: center;
-  padding: 30px;
-  border: 3px dashed blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 2px dashed #7a5af5;
   border-radius: 20px;
-  background-color: #fefaff;
-  width: 400px;
+  background-color: #fdfcff;
+  max-width: 400px;
   margin: 0 auto;
-  box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
 }
+.upload-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .form-controls {
   display: flex;
@@ -152,5 +160,32 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #6dbbe0;
+}
+input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 2px solid #7a5af5;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 0 5px rgba(122, 90, 245, 0.4);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin: 10px 0;
+  text-align: center;
+}
+
+
+input[type="text"]::placeholder {
+  color: #999;
+  font-style: italic;
+  font-size: 14px;
+  transition: color 0.3s;
+  text-align: center;
+}
+
+input[type="text"]:focus {
+  border-color: #5a3bf5;
+  box-shadow: 0 0 8px rgba(90, 59, 245, 0.6);
 }
 

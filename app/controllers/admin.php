@@ -137,6 +137,7 @@ class admin extends Controller
         $data['judul'] = 'Upload Dokumentasi';
         $this->view('templates/navbar', $data);
         $this->view('admin/upload', $data);
+        $this->view('templates/footeradmin', $data);
     }
 
     public function kirim()
@@ -159,7 +160,9 @@ class admin extends Controller
                 'tipe_gambar' => $fileType
             ]);
             $data['berhasil'] = true;
+            $this->view('templates/navbar', $data);
             $this->view('admin/upload', $data);
+            $this->view('templates/footeradmin', $data);
         }
     }
 

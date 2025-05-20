@@ -10,7 +10,7 @@
         <div class="logo">
             <img src="<?= BASEURL; ?>/img/logo.svg" alt="Logo Posyandu">
         </div>
-        <nav>
+        <nav>   
             <ul class="nav-list">
                 <li><a href="#hero">Home</a></li>
                 <li><a href="#tentang">About</a></li>

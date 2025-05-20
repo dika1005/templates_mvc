@@ -10,7 +10,7 @@
 <body>
   <h1>🎉 Upload Dokumentasi Posyandu 🎈</h1>
   <div class="upload-box">
-    <p>Yuk upload foto-foto lucu kegiatan Posyandu! 📸✨</p>
+    <p>Yuk upload foto-foto kegiatan Posyandu! 📸✨</p>
     <form method="POST" action="<?= BASEURL; ?>/admin/kirim" enctype="multipart/form-data">
       <input type="text" name="judul" placeholder="Masukkan Judul Dokumentasi" required />
       <input type="file" name="media" id="mediaUpload" accept="image/*,video/*" required />

@@ -13,7 +13,7 @@ class admin extends Controller
     {
         $data['judul'] = 'Delete admin';
         $this->view('templates/navbar', $data);
-        $this->view('admin/delete');
+        $this->view('admin/search');
         $this->view('templates/footeradmin');
     }
 

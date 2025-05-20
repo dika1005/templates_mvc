@@ -37,29 +37,44 @@
     <?php endif; ?>
 
     <!-- Tampilkan hasil pencarian -->
-    <?php if (isset($data['hasil'])): ?>
-      <div id="dataTable">
-        <table border="1" cellpadding="8" cellspacing="0">
-          <tr>
-            <th>Nama</th>
-            <th>NIK</th>
-            <th>Umur</th>
-            <th>Alamat</th>
-            <th>Jenis Kelamin</th>
-          </tr>
-          <tr>
-            <td><?= htmlspecialchars($data['hasil']['Nama']) ?></td>
-            <td><?= htmlspecialchars($data['hasil']['NIK']) ?></td>
-            <td><?= htmlspecialchars($data['hasil']['Umur']) ?></td>
-            <td><?= htmlspecialchars($data['hasil']['Alamat']) ?></td>
-            <td><?= htmlspecialchars($data['hasil']['Jk']) ?></td>
-          </tr>
-        </table>
-      </div>
-    <?php elseif (!isset($data['error'])): ?>
-      <!-- Tampilkan ini kalau belum pernah search sama sekali -->
-      <p>Data hasil pencarian gak ada nih.</p>
-    <?php endif; ?>
+<?php if (isset($data['hasil'])): ?>
+  <div id="dataTable">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <tr>
+        <th>Nama</th>
+        <th>NIK</th>
+        <th>Umur</th>
+        <th>Alamat</th>
+        <th>Jenis Kelamin</th>
+        <th>Aksi</th>
+      </tr>
+      <tr>
+        <td><?= htmlspecialchars($data['hasil']['Nama']) ?></td>
+        <td><?= htmlspecialchars($data['hasil']['NIK']) ?></td>
+        <td><?= htmlspecialchars($data['hasil']['Umur']) ?></td>
+        <td><?= htmlspecialchars($data['hasil']['Alamat']) ?></td>
+        <td><?= htmlspecialchars($data['hasil']['Jk']) ?></td>
+        <td>
+          <form method="post" action="<?= BASEURL ?>/admin/deleteByNik" onsubmit="return confirm('Yakin ingin menghapus data ini? 😱');">
+            <input type="hidden" name="nik" value="<?= htmlspecialchars($data['hasil']['NIK']) ?>">
+            <button class="btn-klee hapus" type="submit">🗑️ Hapus</button>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+<?php elseif (!isset($data['error'])): ?>
+  <p>Data hasil pencarian gak ada nih.</p>
+<?php endif; ?>
+
+<!-- Notifikasi dari URL -->
+<?php if (isset($_GET['deleted'])): ?>
+  <p style="color: green;">✨ Data berhasil dihapus!</p>
+<?php elseif (isset($_GET['error'])): ?>
+  <p style="color: red;">❌ Gagal menghapus data. Coba lagi ya~</p>
+<?php endif; ?>
+
+
 
     <!-- Statistik -->
     <div>
@@ -80,7 +95,7 @@
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Balita (0-5)', 'Ibu Hamil (23-40)', 'Lansia (50-70)'],
+        labels: ['Balita (0-5)', 'Ibu Hamil (21-40)', 'Lansia (50-100)'],
         datasets: [{
           label: 'Jumlah',
           data: [statistikData.Balita, statistikData["Ibu Hamil"], statistikData.Lansia],

@@ -71,14 +71,14 @@ class Data_model
 
     public function countIbuHamil()
     {
-        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 23 AND 40";
+        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 21 AND 40";
         $this->db->query($query);
         return $this->db->single()['total'];
     }
 
     public function countLansia()
     {
-        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 50 AND 70";
+        $query = "SELECT COUNT(*) AS total FROM $this->table WHERE Umur BETWEEN 50 AND 100";
         $this->db->query($query);
         return $this->db->single()['total'];
     }

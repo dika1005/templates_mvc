@@ -6,7 +6,7 @@ class Controller
     {
         $viewPath = '../app/views/' . $view . '.php';
         if (file_exists($viewPath)) {
-            extract($data); // ⬅⬅⬅ INI YANG KRUSIAL!!!
+            extract($data);
             require_once $viewPath;
         } else {
             die('View tidak ditemukan: ' . $viewPath);
@@ -16,7 +16,6 @@ class Controller
 
     public function model($model)
     {
-        // Pastikan file model ada di path yang benar
         $modelPath = '../app/models/' . $model . '.php';
         if (file_exists($modelPath)) {
             require_once $modelPath;

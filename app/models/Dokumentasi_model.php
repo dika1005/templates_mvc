@@ -13,15 +13,9 @@ class Dokumentasi_model
     public function getAllDokumentasi()
     {
         $query = "SELECT * FROM dokumentasi";
-        $this->db->query($query); // prepare aja
-        return $this->db->resultSet(); // execute dan fetchAll
+        $this->db->query($query); 
+        return $this->db->resultSet(); 
     }
-
-
-
-
-
-
 
     public function getGambarById($id)
     {

@@ -50,7 +50,6 @@ class User_model
 
             $this->db->execute();
             return $this->db->rowCount();
-
         } catch (PDOException $e) {
             if (isset($e->errorInfo[1]) && $e->errorInfo[1] == 1062) {
                 return 'duplikat';
@@ -94,7 +93,6 @@ class User_model
 
             $this->db->execute();
             return $this->db->rowCount();
-
         } catch (Exception $e) {
             return 0;
         }

@@ -10,12 +10,14 @@ class User_model
         $this->db = new Database;
     }
 
+    // method untuk mendapatkan semua data admin
     public function getAllUsers()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
 
+    // method untuk mendapatkan data admin berdasarkan NIK
     public function findByIdentifier($identifier)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NIK = :identifier');
@@ -23,6 +25,7 @@ class User_model
         return $this->db->single();
     }
 
+    // method untuk mendapatkan data admin berdasarkan NIK
     public function tambahDataUser($data)
     {
         try {
@@ -61,6 +64,7 @@ class User_model
         }
     }
 
+    // method untuk mendapatkan data admin berdasarkan NIK
     public function updateDataUser($data)
     {
         if (!isset($data['NIK'], $data['nama'], $data['gender'])) {

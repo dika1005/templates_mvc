@@ -10,6 +10,7 @@ class Dokumentasi_model
         $this->db = new Database;
     }
 
+    // method untuk mendapatkan semua data dokumentasi
     public function getAllDokumentasi()
     {
         $query = "SELECT * FROM dokumentasi";
@@ -17,6 +18,7 @@ class Dokumentasi_model
         return $this->db->resultSet(); 
     }
 
+    // method untuk mendapatkan data dokumentasi berdasarkan id
     public function getGambarById($id)
     {
         $this->db->query("SELECT gambar, tipe_gambar FROM " . $this->table . " WHERE id = :id");
@@ -24,6 +26,7 @@ class Dokumentasi_model
         return $this->db->single();
     }
 
+    // method untuk mendapatkan data dokumentasi berdasarkan id
     public function simpan($data)
     {
         $query = "INSERT INTO dokumentasi (judul, gambar, tipe_gambar) VALUES (:judul, :gambar, :tipe_gambar)";
@@ -34,6 +37,7 @@ class Dokumentasi_model
         return $this->db->execute();
     }
 
+    // method untuk menghapus data dokumentasi berdasarkan id
     public function deleteGambar($id)
     {
         $this->db->query("DELETE FROM " . $this->table . " WHERE id = :id");

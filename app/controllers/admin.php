@@ -17,6 +17,7 @@ class admin extends Controller
         $this->view('templates/footeradmin');
     }
 
+    // Fungsi untuk menghapus data berdasarkan NIK
     public function deleteByNik()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,6 +33,7 @@ class admin extends Controller
         }
     }
 
+    // Fungsi untuk menampilkan halaman list admin
     public function list()
     {
         $data['judul'] = 'List admin';
@@ -41,6 +43,7 @@ class admin extends Controller
         $this->view('templates/footeradmin');
     }
 
+    // Fungsi untuk menampilkan halaman pencarian data
     public function search()
     {
         session_start();
@@ -84,6 +87,7 @@ class admin extends Controller
         $this->view('templates/footeradmin');
     }
 
+    // Fungsi untuk menampilkan halaman input data
     public function input()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -96,6 +100,7 @@ class admin extends Controller
         $this->view('templates/footeradmin');
     }
 
+    // Fungsi untuk menampilkan halaman input data
     public function tambah()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -132,6 +137,7 @@ class admin extends Controller
         }
     }
 
+        // Fungsi untuk menampilkan halaman upload
     public function upload()
     {
         $data['judul'] = 'Upload Dokumentasi';
@@ -140,6 +146,7 @@ class admin extends Controller
         $this->view('templates/footeradmin', $data);
     }
 
+    // Fungsi untuk mengirimkan data upload
     public function kirim()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -166,6 +173,7 @@ class admin extends Controller
         }
     }
 
+        // Fungsi untuk menampilkan halaman laporan
     public function laporan()
     {
         require_once dirname(__DIR__, 2) . '/public/pdf/fpdf.php';

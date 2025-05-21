@@ -6,7 +6,6 @@ class Auth extends Controller
 {
     public function index()
     {
-        // Tambahkan ini
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -28,7 +27,6 @@ class Auth extends Controller
 
     public function register()
     {
-        // Tambahkan ini juga
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -81,7 +79,7 @@ class Auth extends Controller
             if (!empty($errors)) {
                 $_SESSION['pesan'] = implode("<br>", $errors);
                 $_SESSION['pesan_tipe'] = "error";
-                $_SESSION['form_data'] = $_POST; // Keep the submitted data
+                $_SESSION['form_data'] = $_POST; 
                 header('Location: ' . BASEURL . '/auth/register');
                 exit;
             }
@@ -108,7 +106,6 @@ class Auth extends Controller
                 exit;
             }
         } else {
-            // If accessed via GET, redirect to the register form
             header('Location: ' . BASEURL . '/auth/register');
             exit;
         }
@@ -117,8 +114,6 @@ class Auth extends Controller
     // Fungsi untuk memproses login
     public function prosesLogin()
     {
-
-        // Pastikan session dimulai
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
@@ -137,37 +132,28 @@ class Auth extends Controller
             }
 
             $userModel = $this->model('User_model');
-
-            // Langkah ini mengambil data user dari database berdasarkan identifier (NIK/Username)
             $user = $userModel->findByIdentifier($identifier);
 
             if ($user && password_verify($password, $user['Password'])) {
-                // Login Berhasil
 
-                // LANGKAH KUNCI: Menyimpan data user lengkap ke dalam session
                 $_SESSION['user'] = $user;
                 $_SESSION['role'] = $role;
-                // Opsional: Anda mungkin juga ingin menyimpan NIK secara terpisah jika sering digunakan
                 $_SESSION['nik'] = $user['NIK'];
 
-                // Redirect berdasarkan role ke RUTE yang BENAR
                 if ($role == 'admin') {
                     header('Location: ' . BASEURL . '/admin/index');
                 } else {
-                    // Pastikan redirect ini mengarah ke halaman yang menampilkan profil user
-                    header('Location: ' . BASEURL . '/user/profile'); // Mengarah ke fungsi profile()
+                    header('Location: ' . BASEURL . '/user/profile'); 
                 }
 
-                exit; // Penting untuk menghentikan eksekusi script setelah redirect
+                exit;
             } else {
-                // Login Gagal
                 $_SESSION['pesan'] = 'Username/NIK atau Password salah!';
                 $_SESSION['pesan_tipe'] = 'error';
                 header('Location: ' . BASEURL . '/auth/login');
                 exit;
             }
         } else {
-            // Jika bukan request POST, redirect kembali ke halaman login
             header('Location: ' . BASEURL . '/auth/login');
             exit;
         }

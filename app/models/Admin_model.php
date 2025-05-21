@@ -10,12 +10,14 @@ class Admin_model
         $this->db = new Database;
     }
 
+        // method untuk mendapatkan semua data admin
     public function getAllUsers()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
         return $this->db->resultSet();
     }
 
+    // method untuk mendapatkan data admin berdasarkan NIK
     public function findByIdentifier($identifier)
     {
         $this->db->query('SELECT * FROM ' . $this->table . ' WHERE NIK = :identifier');
@@ -23,6 +25,8 @@ class Admin_model
         $user = $this->db->single();
         return $user;
     }
+
+    // method untuk menambahkan data admin
     public function getAllDataPosyandu()
     {
         $this->db->query("SELECT * FROM dataposyandu");

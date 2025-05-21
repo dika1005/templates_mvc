@@ -23,6 +23,7 @@ class User extends Controller
         $this->view('templates/footeruser');
     }
 
+        //fungsi untuk menampilkan halaman update data pengguna
     public function update()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -101,6 +102,7 @@ class User extends Controller
         }
     }
 
+    //fungsi untuk menampilkan jadwal
     public function jadwal()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -114,6 +116,7 @@ class User extends Controller
         $this->view('templates/footeruser');
     }
 
+    //fungsi untuk menampilkan dokumentasi
     public function dokumentasi()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -129,9 +132,7 @@ class User extends Controller
         $this->view('user/dokumentasi', $data);
         $this->view('templates/footeruser');
     }
-
-
-
+    //fungsi untuk menampilkan gambar
     public function getGambar($id)
     {
         $dokumentasiModel = $this->model('Dokumentasi_model');
@@ -146,6 +147,7 @@ class User extends Controller
         }
     }
 
+    //fungsi untuk mengunggah gambar
     public function uploadDokumentasi()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['gambar'])) {
@@ -170,6 +172,7 @@ class User extends Controller
         $this->view('templates/footeruser');
     }
 
+    //fungsi untuk menghapus gambar
     public function deleteDokumentasi($id)
     {
         $dokumentasiModel = $this->model('Dokumentasi_model');

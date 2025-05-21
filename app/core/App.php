@@ -40,6 +40,6 @@ class App
             $url = filter_var($url, FILTER_SANITIZE_URL);
             return explode('/', $url);
         }
-        return []; // Kembalikan array kosong jika tidak ada URL
+        return [];
     }
 }
